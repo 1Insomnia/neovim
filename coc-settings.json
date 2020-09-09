@@ -1,0 +1,14 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "scss",
+    "javascript",
+    "html",
+    "json"
+  ],
+
+  "emmet.includeLanguages": {
+    "vue-html": "html",
+    "javascript": "javascriptreact"
+  }
+}
