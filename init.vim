@@ -11,10 +11,9 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/autoload/plugged')
-" Coc
+" Completion and Synthax
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot'
-
 "Gui stuff
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -38,13 +37,10 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'norcalli/nvim-colorizer.lua'
 " Colorscheme
+Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'haishanh/night-owl.vim'
 Plug 'ntk148v/vim-horizon'
 Plug 'tomasiser/vim-code-dark'
-Plug 'sainnhe/gruvbox-material'
-Plug 'phanviet/vim-monokai-pro'
-Plug 'flazz/vim-colorschemes'
-Plug 'chriskempson/base16-vim'
 "Live Scratchpad
 Plug 'metakirby5/codi.vim'
 call plug#end()
@@ -82,12 +78,11 @@ set listchars=tab:┊\ ,nbsp:␣,trail:·,extends:>,precedes:<
 " Colorscheme
 "------------------------------------------------------------------------------
 set termguicolors
-colorscheme gruvbox
+let g:material_terminal_italics = 1
+let g:material_theme_style = 'palenight'
+let g:material_theme_terminal_italics=1
+colorscheme material
 set background=dark
-" set termguicolors     " enable true colors support
-" let ayucolor="light"  " for light version of theme
-" let ayucolor="mirage" " for mirage version of theme
-" let ayucolor="dark"   " for dark version of theme
 "------------------------------------------------------------------------------
 " Closetag
 "------------------------------------------------------------------------------
@@ -111,19 +106,6 @@ let g:Illuminate_ftblacklist = ['javascript', 'jsx', 'html']
 "------------------------------------------------------------------------------
 let g:indentLine_char = '▏'
 let g:indentLine_color_gui = '#FF0'
-"------------------------------------------------------------------------------
-" Lightline
-"------------------------------------------------------------------------------
-function! LightlineFilename()
-  return &filetype ==# 'vimfiler' ? vimfiler#get_status_string() :
-        \ &filetype ==# 'unite' ? unite#get_status_string() :
-        \ &filetype ==# 'vimshell' ? vimshell#get_status_string() :
-        \ expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
-endfunction
-
-let g:unite_force_overwrite_statusline = 0
-let g:vimfiler_force_overwrite_statusline = 0
-let g:vimshell_force_overwrite_statusline = 0
 "------------------------------------------------------------------------------
 " Vim Markdown
 "------------------------------------------------------------------------------
@@ -251,7 +233,7 @@ set clipboard=unnamedplus               " Copy paste between vim and everything 
 set colorcolumn=80                      " and give me a colored column
 highlight ColorColumn ctermbg=0 guibg=lightred
 set incsearch
-"set guifont=Input\ Sans\
+set guifont=Operator\ Mono\
 " Very magic by default
 " nnoremap ? ?\v
 " nnoremap / /\v
@@ -275,7 +257,7 @@ nnoremap <C-s> :source %<cr>
 " Better splits
 set splitbelow
 set splitright
-" 
+"
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
@@ -292,9 +274,12 @@ set foldlevel=2
 :command! Wq wq
 :command! Wqa wqa
 :command! W w
-:command! Q q 
+:command! Q q
 
 " YEAH
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 vnoremap X "_d
+
+" Replace current word with last yanked test
+nnoremap S diw"0P
