@@ -1,7 +1,6 @@
 let mapleader = "\<Space>"
 set shell=/bin/zsh
-source $HOME/.config/nvim/coc.vim
-
+source $HOME/.config/nvim/coc.vim 
 " auto-install vim-plug
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
   silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
@@ -41,6 +40,8 @@ Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'haishanh/night-owl.vim'
 Plug 'ntk148v/vim-horizon'
 Plug 'tomasiser/vim-code-dark'
+Plug 'cseelus/vim-colors-lucid'
+Plug 'kjssad/quantum.vim'
 "Live Scratchpad
 Plug 'metakirby5/codi.vim'
 call plug#end()
@@ -79,10 +80,10 @@ set listchars=tab:┊\ ,nbsp:␣,trail:·,extends:>,precedes:<
 "------------------------------------------------------------------------------
 set termguicolors
 let g:material_terminal_italics = 1
-let g:material_theme_style = 'palenight'
+let g:material_theme_style = 'default'
 let g:material_theme_terminal_italics=1
-colorscheme material
-set background=dark
+colorscheme quantum
+set background=light
 "------------------------------------------------------------------------------
 " Closetag
 "------------------------------------------------------------------------------
