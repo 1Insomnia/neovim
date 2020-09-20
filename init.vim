@@ -1,57 +1,7 @@
 let mapleader = "\<Space>"
 set shell=/bin/zsh
 source $HOME/.config/nvim/coc.vim 
-" auto-install vim-plug
-if empty(glob('~/.config/nvim/autoload/plug.vim'))
-  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  "autocmd VimEnter * PlugInstall
-  autocmd VimEnter * PlugInstall | source $MYVIMRC
-endif
-
-call plug#begin('~/.config/nvim/autoload/plugged')
-" Completion and Synthax
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'sheerun/vim-polyglot'
-"Gui stuff
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'JamshedVesuna/vim-markdown-preview'
-Plug 'ryanoasis/vim-devicons'
-" Editting
-Plug 'RRethy/vim-illuminate'
-Plug 'Yggdroot/indentLine'
-Plug 'tpope/vim-surround'
-" Extra
-Plug 'alvan/vim-closetag'
-Plug 'scrooloose/nerdtree'
-Plug 'machakann/vim-highlightedyank'
-" FZF
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-"Git
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
-" Misc
-Plug 'tpope/vim-commentary'
-Plug 'norcalli/nvim-colorizer.lua'
-" Colorscheme
-Plug 'kaicataldo/material.vim', { 'branch': 'main' }
-Plug 'haishanh/night-owl.vim'
-Plug 'ntk148v/vim-horizon'
-Plug 'tomasiser/vim-code-dark'
-Plug 'cseelus/vim-colors-lucid'
-Plug 'kjssad/quantum.vim'
-"Live Scratchpad
-Plug 'metakirby5/codi.vim'
-call plug#end()
-
-" Automatically install missing plugins on startup
-autocmd VimEnter *
-  \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-  \|   PlugInstall --sync | q
-  \| endif
-
+source $HOME/.config/nvim/plugs.vim
 " True color support
 if (empty($TMUX))
   if (has("nvim"))
@@ -82,8 +32,8 @@ set termguicolors
 let g:material_terminal_italics = 1
 let g:material_theme_style = 'default'
 let g:material_theme_terminal_italics=1
-colorscheme quantum
-set background=light
+colorscheme cobalt2
+set background=dark
 "------------------------------------------------------------------------------
 " Closetag
 "------------------------------------------------------------------------------
@@ -107,11 +57,6 @@ let g:Illuminate_ftblacklist = ['javascript', 'jsx', 'html']
 "------------------------------------------------------------------------------
 let g:indentLine_char = '▏'
 let g:indentLine_color_gui = '#FF0'
-"------------------------------------------------------------------------------
-" Vim Markdown
-"------------------------------------------------------------------------------
-let vim_markdown_preview_hotkey='<C-m>'
-let vim_markdown_preview_browser='Firefox'
 "------------------------------------------------------------------------------
 " Git Gutter
 "------------------------------------------------------------------------------
@@ -198,7 +143,7 @@ endfunction
 
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 
-nnoremap <C-f> :Rg!
+nnoremap <C-f> :Rg
 
 "------------------------------------------------------------------------------
 " Defaults
@@ -222,7 +167,7 @@ set expandtab                           " Converts tabs to spaces
 set smartindent                         " Makes indenting smart
 set autoindent                          " Good auto indent
 "set laststatus=2                        " Always display the status line
-set number                              " Line numbers
+set number
 set relativenumber
 set showtabline=2                       " Always show tabs
 set noshowmode                          " We don't need to see things like -- INSERT -- anymore
@@ -232,7 +177,7 @@ set shortmess+=c                        " Don't pass messages to |ins-completion
 set signcolumn=yes                      " Always show the signcolumn, otherwise it would shift the text each time
 set clipboard=unnamedplus               " Copy paste between vim and everything else
 set colorcolumn=80                      " and give me a colored column
-highlight ColorColumn ctermbg=0 guibg=lightred
+highlight ColorColumn ctermbg=0 guibg=yellow
 set incsearch
 set guifont=Operator\ Mono\
 " Very magic by default
