@@ -32,7 +32,7 @@ set termguicolors
 let g:material_terminal_italics = 1
 let g:material_theme_style = 'default'
 let g:material_theme_terminal_italics=1
-colorscheme cobalt2
+colorscheme pop-punk
 set background=dark
 "------------------------------------------------------------------------------
 " Closetag
