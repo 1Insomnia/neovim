@@ -32,11 +32,15 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'norcalli/nvim-colorizer.lua'
 " Colorscheme
-Plug 'haishanh/night-owl.vim'
 Plug 'ntk148v/vim-horizon'
 Plug 'tomasiser/vim-code-dark'
 Plug 'herrbischoff/cobalt2.vim'
-Plug 'bignimbus/pop-punk.vim'
+Plug 'whatyouhide/vim-gotham'
+Plug 'christophermca/meta5'
+Plug 'liuchengxu/space-vim-dark'
+Plug 'jaredgorski/spacecamp'
+Plug 'yuttie/hydrangea-vim'
+Plug 'aonemd/kuroi.vim
 "Live Scratchpad
 Plug 'metakirby5/codi.vim'
 call plug#end()

@@ -32,7 +32,8 @@ set termguicolors
 let g:material_terminal_italics = 1
 let g:material_theme_style = 'default'
 let g:material_theme_terminal_italics=1
-colorscheme pop-punk
+"colorscheme pop-punk
+colorscheme hydrangea
 set background=dark
 "------------------------------------------------------------------------------
 " Closetag
@@ -95,8 +96,7 @@ let g:fzf_tags_command = 'ctags -R'
 "let g:fzf_layout = { 'window': 'call CreateCenteredFloatingWindow()' }
 "let $FZF_DEFAULT_OPTS="--reverse "                      " top to bottom
 
-let $FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git/**'"
-"-g '!{node_modules,.git}'
+let $FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git/**' -g '!{node_modules,.git}'"
 
 " Customize fzf colors to match your color scheme
 let g:fzf_colors =
@@ -177,9 +177,9 @@ set shortmess+=c                        " Don't pass messages to |ins-completion
 set signcolumn=yes                      " Always show the signcolumn, otherwise it would shift the text each time
 set clipboard=unnamedplus               " Copy paste between vim and everything else
 set colorcolumn=80                      " and give me a colored column
-highlight ColorColumn ctermbg=0 guibg=yellow
+highlight ColorColumn ctermbg=0 guibg=violet
 set incsearch
-set guifont=Operator\ Mono\
+set guifont=Cartograph\ CF\
 " Very magic by default
 " nnoremap ? ?\v
 " nnoremap / /\v
@@ -199,6 +199,7 @@ nnoremap <right> :bn<CR>
 nnoremap <C-k> :bdelete<CR>
 " Reload config
 nnoremap <C-s> :source %<cr>
+nnoremap <C-k> :bd<cr>
 
 " Better splits
 set splitbelow
