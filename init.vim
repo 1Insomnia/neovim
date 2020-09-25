@@ -32,8 +32,9 @@ set termguicolors
 let g:material_terminal_italics = 1
 let g:material_theme_style = 'default'
 let g:material_theme_terminal_italics=1
-"colorscheme pop-punk
-colorscheme hydrangea
+"colorscheme hydrangea
+"colorscheme space-vim-dark
+colorscheme agila 
 set background=dark
 "------------------------------------------------------------------------------
 " Closetag
@@ -66,6 +67,22 @@ let g:gitgutter_enabled = 1
 highlight GitGutterAdd    guifg=#37bd58 ctermfg=2
 highlight GitGutterChange guifg=#199ffd ctermfg=3
 highlight GitGutterDelete guifg=#fc4a6d ctermfg=1
+
+let g:gitgutter_override_sign_column_highlight = 0
+let g:gitgutter_sign_added                     = '+'
+let g:gitgutter_sign_modified                  = '±'
+let g:gitgutter_sign_removed                   = '-'
+let g:gitgutter_sign_removed_first_line        = '×'
+let g:gitgutter_sign_modified_removed          = '×'
+"------------------------------------------------------------------------------
+" NERDTree
+"------------------------------------------------------------------------------
+let g:NERDTreeMinimalUI           = 1
+let g:NERDTreeWinPos              = 'left'
+let g:NERDTreeWinSize             = 20
+let g:NERDTreeStatusline          = "  "
+let g:NERDTreeDirArrowExpandable  = '+'
+let g:NERDTreeDirArrowCollapsible = '-'
 "------------------------------------------------------------------------------
 " FZF
 "------------------------------------------------------------------------------
@@ -178,10 +195,30 @@ set shortmess+=c                        " Don't pass messages to |ins-completion
 set signcolumn=yes                      " Always show the signcolumn, otherwise it would shift the text each time
 set timeoutlen=500 "Default 1000ms
 set clipboard=unnamedplus               " Copy paste between vim and everything else
-set colorcolumn=80                      " and give me a colored column
-highlight ColorColumn ctermbg=0 guibg=violet
+set colorcolumn=72,79 
+highlight ColorColumn ctermbg=0 guibg=fg
 set incsearch
 set guifont=Cartograph\ CF\
+
+set wildignore+=.git,.hg,.svn
+set wildignore+=*.aux,*.out,*.toc
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest,*.rbc,*.class
+set wildignore+=*.ai,*.bmp,*.gif,*.ico,*.jpg,*.jpeg,*.png,*.psd,*.webp
+set wildignore+=*.avi,*.divx,*.mp4,*.webm,*.mov,*.m2ts,*.mkv,*.vob,*.mpg,*.mpeg
+set wildignore+=*.mp3,*.oga,*.ogg,*.wav,*.flac
+set wildignore+=*.eot,*.otf,*.ttf,*.woff
+set wildignore+=*.doc,*.pdf,*.cbr,*.cbz
+set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz,*.kgb
+set wildignore+=*.swp,.lock,.DS_Store,._*
+
+" augroups
+augroup indents
+	autocmd!
+	autocmd FileType less,css,scss,html setlocal ts=2 sts=2 sw=2 expandtab
+	autocmd FileType text,markdown setlocal expandtab
+	autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab
+augroup END
+
 " Very magic by default
 " nnoremap ? ?\v
 " nnoremap / /\v
