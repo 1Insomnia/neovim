@@ -7,6 +7,7 @@ let g:coc_global_extensions = [
   \ 'coc-prettier', 
   \ 'coc-json', 
   \ 'coc-css', 
+  \ 'coc-todolist', 
   \ ]
 " from readme
 " if hidden is not set, TextEdit might fail.

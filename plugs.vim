@@ -14,6 +14,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
+Plug 'liuchengxu/vim-which-key'
 " Editting
 Plug 'RRethy/vim-illuminate'
 Plug 'Yggdroot/indentLine'
@@ -40,7 +41,7 @@ Plug 'christophermca/meta5'
 Plug 'liuchengxu/space-vim-dark'
 Plug 'jaredgorski/spacecamp'
 Plug 'yuttie/hydrangea-vim'
-Plug 'aonemd/kuroi.vim
+Plug 'aonemd/kuroi.vim'
 "Live Scratchpad
 Plug 'metakirby5/codi.vim'
 call plug#end()

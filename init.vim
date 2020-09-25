@@ -87,6 +87,7 @@ nnoremap <C-g> :GFiles<CR>
 nnoremap <C-p> :Files<CR>
 nnoremap <C-b> :Buffers<CR>
 
+map <leader>b :Buffers<CR>
 nnoremap <leader>g :Rg<CR>
 nnoremap <leader>t :Tags<CR>
 nnoremap <leader>m :Marks<CR>
@@ -175,6 +176,7 @@ set nobackup                            " This is recommended by coc#refresh
 set nowritebackup                       " This is recommended by coc
 set shortmess+=c                        " Don't pass messages to |ins-completion-menu|.
 set signcolumn=yes                      " Always show the signcolumn, otherwise it would shift the text each time
+set timeoutlen=500 "Default 1000ms
 set clipboard=unnamedplus               " Copy paste between vim and everything else
 set colorcolumn=80                      " and give me a colored column
 highlight ColorColumn ctermbg=0 guibg=violet
@@ -196,7 +198,6 @@ inoremap <right> <nop>
 " Left and right can switch buffers
 nnoremap <left> :bp<CR>
 nnoremap <right> :bn<CR>
-nnoremap <C-k> :bdelete<CR>
 " Reload config
 nnoremap <C-s> :source %<cr>
 nnoremap <C-k> :bd<cr>
@@ -206,7 +207,7 @@ set splitbelow
 set splitright
 "
 nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
+" nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
@@ -227,6 +228,7 @@ set foldlevel=2
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 vnoremap X "_d
-
 " Replace current word with last yanked test
 nnoremap S diw"0P
+
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
