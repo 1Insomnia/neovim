@@ -34,7 +34,7 @@ let g:material_theme_style = 'default'
 let g:material_theme_terminal_italics=1
 "colorscheme hydrangea
 "colorscheme space-vim-dark
-colorscheme agila 
+colorscheme hydrangea
 set background=dark
 "------------------------------------------------------------------------------
 " Closetag

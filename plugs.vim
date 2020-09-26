@@ -37,12 +37,13 @@ Plug 'ntk148v/vim-horizon'
 Plug 'tomasiser/vim-code-dark'
 Plug 'herrbischoff/cobalt2.vim'
 Plug 'whatyouhide/vim-gotham'
-Plug 'nerdypepper/agila.vim'
 Plug 'christophermca/meta5'
 Plug 'liuchengxu/space-vim-dark'
-Plug 'jaredgorski/spacecamp'
 Plug 'yuttie/hydrangea-vim'
 Plug 'aonemd/kuroi.vim'
+Plug 'nerdypepper/agila.vim'
+Plug 'nerdypepper/chestnut.vim'
+Plug 'nerdypepper/vim-colors-plain', { 'branch': 'duotone' }
 "Live Scratchpad
 Plug 'metakirby5/codi.vim'
 call plug#end()
