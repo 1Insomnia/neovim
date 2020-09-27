@@ -16,6 +16,16 @@ if (empty($TMUX))
   endif
 endif
 "------------------------------------------------------------------------------
+" Colorscheme
+"------------------------------------------------------------------------------
+set termguicolors
+let g:material_terminal_italics = 1
+let g:material_theme_style = 'default'
+let g:material_theme_terminal_italics=1
+"colorscheme hydrangea
+colorscheme kuroi
+set background=dark
+"------------------------------------------------------------------------------
 " Better whitespaces
 "------------------------------------------------------------------------------
 " Set list
@@ -26,16 +36,27 @@ let g:better_whitespace_enabled=0
 set list
 set listchars=tab:┊\ ,nbsp:␣,trail:·,extends:>,precedes:<
 "------------------------------------------------------------------------------
-" Colorscheme
+" Markdown
 "------------------------------------------------------------------------------
-set termguicolors
-let g:material_terminal_italics = 1
-let g:material_theme_style = 'default'
-let g:material_theme_terminal_italics=1
-"colorscheme hydrangea
-"colorscheme space-vim-dark
-colorscheme hydrangea
-set background=dark
+" disable header folding
+let g:vim_markdown_folding_disabled = 1
+
+" do not use conceal feature, the implementation is not so good
+let g:vim_markdown_conceal = 0
+
+" disable math tex conceal feature
+let g:tex_conceal = ""
+let g:vim_markdown_math = 1
+
+" support front matter of various format
+let g:vim_markdown_frontmatter = 1  " for YAML format
+let g:vim_markdown_toml_frontmatter = 1  " for TOML format
+let g:vim_markdown_json_frontmatter = 1  " for JSON format
+
+" Pandoc syntax
+augroup pandoc_syntax
+    au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
+augroup END
 "------------------------------------------------------------------------------
 " Closetag
 "------------------------------------------------------------------------------
@@ -249,10 +270,10 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " Code folding
-set foldmethod=indent
-set foldnestmax=10
-"set nofoldenable
-set foldlevel=2
+" set foldmethod=indent
+" set foldnestmax=10
+" set nofoldenable
+" set foldlevel=2
 
 " Ugh
 :command! WQ wq
