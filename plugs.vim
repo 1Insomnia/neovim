@@ -16,6 +16,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 Plug 'liuchengxu/vim-which-key'
 Plug 'junegunn/goyo.vim'
+Plug 'luochen1990/rainbow'
 " Editting
 Plug 'RRethy/vim-illuminate'
 Plug 'Yggdroot/indentLine'
@@ -37,18 +38,46 @@ Plug 'tpope/vim-fugitive'
 " Misc
 Plug 'tpope/vim-commentary'
 Plug 'norcalli/nvim-colorizer.lua'
+Plug 'liuchengxu/vim-clap'
+Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
+Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
+Plug 'liuchengxu/vim-clap', { 'do': { -> clap#installer#force_download() } }
+Plug 'liuchengxu/vim-clap', { 'do': has('win32') ? 'cargo build --release' : 'make' }
 " Colorscheme
-Plug 'ntk148v/vim-horizon'
+" Dark
 Plug 'tomasiser/vim-code-dark'
 Plug 'herrbischoff/cobalt2.vim'
-Plug 'whatyouhide/vim-gotham'
-Plug 'christophermca/meta5'
 Plug 'liuchengxu/space-vim-dark'
-Plug 'yuttie/hydrangea-vim'
-Plug 'aonemd/kuroi.vim'
+" Dark colorful
+Plug 'joshdick/onedark.vim'
 Plug 'nerdypepper/agila.vim'
-Plug 'nerdypepper/chestnut.vim'
-Plug 'nerdypepper/vim-colors-plain', { 'branch': 'duotone' }
+Plug 'Rigellute/shades-of-purple.vim'
+Plug 'aonemd/kuroi.vim'
+Plug 'bluz71/vim-moonfly-colors'
+Plug 'bluz71/vim-nightfly-guicolors'
+Plug 'fenetikm/falcon'
+Plug 'Rigellute/rigel'
+" Outrun/Cyber
+Plug 'ghifarit53/tokyonight-vim'
+Plug 'ntk148v/vim-horizon'
+Plug 'yuttie/hydrangea-vim'
+Plug 'hiroakis/cyberspace.vim'
+"Light Plain
+Plug 'logico/typewriter-vim'
+Plug 'thenewvu/vim-colors-sketching'
+"Light colorful
+Plug 'schickele/vim-fruchtig'
+" Plug 'NLKNguyen/papercolor-theme'
+Plug 'michaelmalick/vim-colors-bluedrake'
+Plug 'yasukotelin/shirotelin'
+Plug 'arzg/vim-colors-xcode'
+Plug 'chmllr/elrodeo-vim-colorscheme'
+Plug 'fabi1cazenave/kalahari.vim' "best light colorscheme so far
+Plug 'https://gitlab.com/yorickpeterse/vim-paper.git'
+Plug 'equt/paper.vim'
+Plug 'meain/hima-vim' "Really cool light theme bundle with dark one
+Plug 'datMaffin/vim-colors-bionik'
+Plug 'andbar-ru/vim-unicon'
 "Live Scratchpad
 Plug 'metakirby5/codi.vim'
 call plug#end()

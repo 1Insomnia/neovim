@@ -19,22 +19,26 @@ endif
 " Colorscheme
 "------------------------------------------------------------------------------
 set termguicolors
-let g:material_terminal_italics = 1
-let g:material_theme_style = 'default'
-let g:material_theme_terminal_italics=1
-"colorscheme hydrangea
-colorscheme kuroi
-set background=dark
+" let g:material_terminal_italics = 1
+" let g:material_theme_style = 'default'
+" let g:material_theme_terminal_italics=1
+" let g:tokyonight_style = 'storm' " available: night, storm
+" let g:tokyonight_enable_italic = 1
+" set rtp+=~/.vim/plugged/vim-colors-sketching
+colorscheme paper
+set background=light
+"------------------------------------------------------------------------------
+" Bracket pair colorizer
+"------------------------------------------------------------------------------
+let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
 "------------------------------------------------------------------------------
 " Better whitespaces
 "------------------------------------------------------------------------------
-" Set list
-" Show tabs as __ / Trails as / End of line as
 "highlight SpecialKey ctermfg=12 guifg=DimGrey
-highlight SpecialKey ctermfg=14 guifg=Yellow
-let g:better_whitespace_enabled=0
+" highlight SpecialKey ctermfg=14 guifg=Yellow
 set list
-set listchars=tab:┊\ ,nbsp:␣,trail:·,extends:>,precedes:<
+set fillchars+=vert:│
+set listchars=tab:»-,eol:↲,extends:»,precedes:«,space:.
 "------------------------------------------------------------------------------
 " Markdown
 "------------------------------------------------------------------------------
@@ -182,7 +186,7 @@ endfunction
 
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 
-nnoremap <C-f> :Rg
+" nnoremap <C-f> :Rg
 
 "------------------------------------------------------------------------------
 " Defaults
@@ -216,8 +220,8 @@ set shortmess+=c                        " Don't pass messages to |ins-completion
 set signcolumn=yes                      " Always show the signcolumn, otherwise it would shift the text each time
 set timeoutlen=500 "Default 1000ms
 set clipboard=unnamedplus               " Copy paste between vim and everything else
-set colorcolumn=72,79 
-highlight ColorColumn ctermbg=0 guibg=fg
+set colorcolumn=80
+highlight ColorColumn ctermbg=0 guibg=red
 set incsearch
 set guifont=Cartograph\ CF\
 
@@ -254,18 +258,19 @@ inoremap <left> <nop>
 inoremap <right> <nop>
 
 " Left and right can switch buffers
+nnoremap <C-f> :Clap blines<CR>
 nnoremap <left> :bp<CR>
 nnoremap <right> :bn<CR>
 " Reload config
 nnoremap <C-s> :source %<cr>
-nnoremap <C-k> :bd<cr>
+nnoremap <A-k> :bd<cr>
 
 " Better splits
 set splitbelow
 set splitright
 "
 nnoremap <C-J> <C-W><C-J>
-" nnoremap <C-K> <C-W><C-K>
+nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
