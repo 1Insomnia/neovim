@@ -57,27 +57,25 @@ Plug 'bluz71/vim-moonfly-colors'
 Plug 'bluz71/vim-nightfly-guicolors'
 Plug 'fenetikm/falcon'
 Plug 'Rigellute/rigel'
+Plug 'koirand/tokyo-metro.vim'
 " Outrun/Cyber
 Plug 'ghifarit53/tokyonight-vim'
 Plug 'ntk148v/vim-horizon'
 Plug 'yuttie/hydrangea-vim'
-Plug 'hiroakis/cyberspace.vim'
 "Light Plain
 Plug 'logico/typewriter-vim'
 Plug 'thenewvu/vim-colors-sketching'
 "Light colorful
 Plug 'schickele/vim-fruchtig'
-" Plug 'NLKNguyen/papercolor-theme'
+Plug 'NLKNguyen/papercolor-theme'
 Plug 'michaelmalick/vim-colors-bluedrake'
 Plug 'yasukotelin/shirotelin'
 Plug 'arzg/vim-colors-xcode'
 Plug 'chmllr/elrodeo-vim-colorscheme'
 Plug 'fabi1cazenave/kalahari.vim' "best light colorscheme so far
-Plug 'https://gitlab.com/yorickpeterse/vim-paper.git'
+" Plug 'https://gitlab.com/yorickpeterse/vim-paper.git'
 Plug 'equt/paper.vim'
 Plug 'meain/hima-vim' "Really cool light theme bundle with dark one
-Plug 'datMaffin/vim-colors-bionik'
-Plug 'andbar-ru/vim-unicon'
 "Live Scratchpad
 Plug 'metakirby5/codi.vim'
 call plug#end()

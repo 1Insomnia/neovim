@@ -22,11 +22,10 @@ set termguicolors
 " let g:material_terminal_italics = 1
 " let g:material_theme_style = 'default'
 " let g:material_theme_terminal_italics=1
-" let g:tokyonight_style = 'storm' " available: night, storm
-" let g:tokyonight_enable_italic = 1
-" set rtp+=~/.vim/plugged/vim-colors-sketching
-colorscheme paper
-set background=light
+let g:tokyonight_style = 'storm' " available: night, storm
+let g:tokyonight_enable_italic = 1
+colorscheme tokyonight
+set background=dark
 "------------------------------------------------------------------------------
 " Bracket pair colorizer
 "------------------------------------------------------------------------------
@@ -38,7 +37,7 @@ let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowTo
 " highlight SpecialKey ctermfg=14 guifg=Yellow
 set list
 set fillchars+=vert:│
-set listchars=tab:»-,eol:↲,extends:»,precedes:«,space:.
+set listchars=tab:▸-,eol:↲,extends:»,precedes:«,space:•
 "------------------------------------------------------------------------------
 " Markdown
 "------------------------------------------------------------------------------
@@ -203,13 +202,14 @@ set splitbelow                          " Horizontal splits will automatically b
 set splitright                          " Vertical splits will automatically be to the right
 set t_Co=256                            " Support 256 colors
 set conceallevel=0                      " So that I can see `` in markdown files
-set tabstop=2                           " Insert 2 spaces for a tab
-set shiftwidth=2                        " Change the number of space characters inserted for indentation
+set tabstop=4                           " Insert 2 spaces for a tab
+set tw=4
+" set shiftwidth=4                        " Change the number of space characters inserted for indentation
 set smarttab                            " Makes tabbing smarter will realize you have 2 vs 4
 set expandtab                           " Converts tabs to spaces
 set smartindent                         " Makes indenting smart
 set autoindent                          " Good auto indent
-"set laststatus=2                        " Always display the status line
+set laststatus=2                        " Always display the status line
 set number
 set relativenumber
 set showtabline=2                       " Always show tabs
@@ -221,9 +221,8 @@ set signcolumn=yes                      " Always show the signcolumn, otherwise 
 set timeoutlen=500 "Default 1000ms
 set clipboard=unnamedplus               " Copy paste between vim and everything else
 set colorcolumn=80
-highlight ColorColumn ctermbg=0 guibg=red
+highlight ColorColumn ctermbg=0 guibg=pink
 set incsearch
-set guifont=Cartograph\ CF\
 
 set wildignore+=.git,.hg,.svn
 set wildignore+=*.aux,*.out,*.toc
@@ -245,9 +244,9 @@ augroup indents
 augroup END
 
 " Very magic by default
-" nnoremap ? ?\v
-" nnoremap / /\v
-" cnoremap %s/ %sm/
+nnoremap ? ?\v
+nnoremap / /\v
+cnoremap %s/ %sm/
 
 " No arrow keys
 nnoremap <up> <nop>
@@ -268,17 +267,22 @@ nnoremap <A-k> :bd<cr>
 " Better splits
 set splitbelow
 set splitright
-"
+
+" Easy pane switching
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" Split plane
+nnoremap <A-H> :split<CR>
+nnoremap <A-V> :vsplit<CR>
+
 " Code folding
-" set foldmethod=indent
-" set foldnestmax=10
-" set nofoldenable
-" set foldlevel=2
+set foldmethod=indent
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
 
 " Ugh
 :command! WQ wq
