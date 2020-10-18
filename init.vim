@@ -15,6 +15,12 @@ if (empty($TMUX))
     set termguicolors
   endif
 endif
+
+" general settings
+set nobackup
+set nowritebackup
+set noswapfile " get rid of swapfiles everywhere
+set dir=/tmp
 "------------------------------------------------------------------------------
 " Colorscheme
 "------------------------------------------------------------------------------
@@ -24,7 +30,12 @@ set termguicolors
 " let g:material_theme_terminal_italics=1
 let g:tokyonight_style = 'storm' " available: night, storm
 let g:tokyonight_enable_italic = 1
-colorscheme tokyonight
+" let g:daycula_enable_italic = 1
+" let g:daycula_current_word = 'underline'
+" let g:sonokai_style = 'espresso'
+" let g:sonokai_enable_italic = 1
+" let g:sonokai_disable_italic_comment = 1
+colorscheme agila
 set background=dark
 "------------------------------------------------------------------------------
 " Bracket pair colorizer
@@ -36,8 +47,10 @@ let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowTo
 "highlight SpecialKey ctermfg=12 guifg=DimGrey
 " highlight SpecialKey ctermfg=14 guifg=Yellow
 set list
-set fillchars+=vert:│
-set listchars=tab:▸-,eol:↲,extends:»,precedes:«,space:•
+" set fillchars+=vert:│
+set fillchars=vert:\│
+" set listchars=tab:-▸,eol:↲,extends:»,precedes:«,space:•
+set listchars=tab:┊\ ,nbsp:␣,trail:•,extends:>,precedes:<
 "------------------------------------------------------------------------------
 " Markdown
 "------------------------------------------------------------------------------
@@ -79,10 +92,31 @@ nmap <C-n> :NERDTreeToggle<CR>
 "------------------------------------------------------------------------------
 let g:Illuminate_ftblacklist = ['javascript', 'jsx', 'html']
 "------------------------------------------------------------------------------
+"Indenting
+"------------------------------------------------------------------------------
+augroup plaintext
+    autocmd!
+    autocmd FileType text,markdown setlocal ts=2 sts=2 sw=2 expandtab textwidth=60
+augroup END
+
+augroup webdev
+    autocmd!
+    autocmd FileType less,css,html,js?,ts? setlocal ts=2 sts=2 sw=2 expandtab
+    autocmd FileType less,css,html nnoremap <Leader>s viB:sort<cr>
+augroup END
+
+augroup restorecursor
+    autocmd BufReadPost *
+                \ if line("'\"") > 1 && line("'\"") <= line("$") |
+                \   execute "normal! g`\"" |
+                \ endif
+augroup END
+"------------------------------------------------------------------------------
 "Indent line
 "------------------------------------------------------------------------------
 let g:indentLine_char = '▏'
-let g:indentLine_color_gui = '#FF0'
+" let g:indentLine_color_gui = '#FFF000'
+let g:indentLine_setColors = 1
 "------------------------------------------------------------------------------
 " Git Gutter
 "------------------------------------------------------------------------------
@@ -195,16 +229,19 @@ set hidden                              " Required to keep multiple buffers open
 set encoding=utf-8                      " The encoding displayed
 set pumheight=10                        " Makes popup menu smaller
 set fileencoding=utf-8                  " The encoding written to file
-set ruler              			            " Show the cursor position all the time
+set ruler                                   " Show the cursor position all the time
 set cmdheight=2                         " More space for displaying messages
 set mouse=a                             " Enable your mouse
 set splitbelow                          " Horizontal splits will automatically be below
 set splitright                          " Vertical splits will automatically be to the right
 set t_Co=256                            " Support 256 colors
 set conceallevel=0                      " So that I can see `` in markdown files
-set tabstop=4                           " Insert 2 spaces for a tab
-set tw=4
-" set shiftwidth=4                        " Change the number of space characters inserted for indentation
+set shiftwidth=4     " indent = 4 spaces
+set expandtab
+set tabstop=4        " tab = 4 spaces
+set softtabstop=4    " backspace through spaces
+set path+=**
+set updatetime=300
 set smarttab                            " Makes tabbing smarter will realize you have 2 vs 4
 set expandtab                           " Converts tabs to spaces
 set smartindent                         " Makes indenting smart
@@ -214,8 +251,6 @@ set number
 set relativenumber
 set showtabline=2                       " Always show tabs
 set noshowmode                          " We don't need to see things like -- INSERT -- anymore
-set nobackup                            " This is recommended by coc#refresh
-set nowritebackup                       " This is recommended by coc
 set shortmess+=c                        " Don't pass messages to |ins-completion-menu|.
 set signcolumn=yes                      " Always show the signcolumn, otherwise it would shift the text each time
 set timeoutlen=500 "Default 1000ms
@@ -237,10 +272,10 @@ set wildignore+=*.swp,.lock,.DS_Store,._*
 
 " augroups
 augroup indents
-	autocmd!
-	autocmd FileType less,css,scss,html setlocal ts=2 sts=2 sw=2 expandtab
-	autocmd FileType text,markdown setlocal expandtab
-	autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab
+    autocmd!
+    autocmd FileType less,css,scss,html setlocal ts=2 sts=2 sw=2 expandtab
+    autocmd FileType text,markdown setlocal expandtab
+    autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab
 augroup END
 
 " Very magic by default
@@ -290,6 +325,8 @@ set foldlevel=2
 :command! Wqa wqa
 :command! W w
 :command! Q q
+:command! PI :PlugInstall
+:command! S :source %
 
 " YEAH
 vnoremap J :m '>+1<CR>gv=gv
@@ -299,3 +336,12 @@ vnoremap X "_d
 nnoremap S diw"0P
 
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+
+" coc-nvim
+hi CocHintSign ctermfg=6
+hi CocErrorSign ctermfg=1
+hi CocWarningSign ctermfg=3
+hi CocInfoSign ctermfg=6
+
+hi CocInfoFloat ctermfg=7
+hi CocHintFloat ctermfg=7

@@ -44,38 +44,39 @@ Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
 Plug 'liuchengxu/vim-clap', { 'do': { -> clap#installer#force_download() } }
 Plug 'liuchengxu/vim-clap', { 'do': has('win32') ? 'cargo build --release' : 'make' }
 " Colorscheme
+" Nerdy
+Plug 'nerdypepper/agila.vim'
+Plug 'nerdypepper/chestnut.vim'
+Plug 'nerdypepper/vim-colors-plain', { 'branch': 'duotone' }
 " Dark
 Plug 'tomasiser/vim-code-dark'
-Plug 'herrbischoff/cobalt2.vim'
-Plug 'liuchengxu/space-vim-dark'
 " Dark colorful
 Plug 'joshdick/onedark.vim'
-Plug 'nerdypepper/agila.vim'
 Plug 'Rigellute/shades-of-purple.vim'
 Plug 'aonemd/kuroi.vim'
 Plug 'bluz71/vim-moonfly-colors'
 Plug 'bluz71/vim-nightfly-guicolors'
-Plug 'fenetikm/falcon'
 Plug 'Rigellute/rigel'
 Plug 'koirand/tokyo-metro.vim'
+Plug 'ghifarit53/sonokai'
+Plug 'rakr/vim-colors-rakr'
 " Outrun/Cyber
 Plug 'ghifarit53/tokyonight-vim'
 Plug 'ntk148v/vim-horizon'
 Plug 'yuttie/hydrangea-vim'
-"Light Plain
-Plug 'logico/typewriter-vim'
-Plug 'thenewvu/vim-colors-sketching'
+Plug 'ghifarit53/daycula-vim' , {'branch' : 'main'}
 "Light colorful
+Plug 'tacahiroy/vim-colors-isotake'
 Plug 'schickele/vim-fruchtig'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'michaelmalick/vim-colors-bluedrake'
 Plug 'yasukotelin/shirotelin'
 Plug 'arzg/vim-colors-xcode'
-Plug 'chmllr/elrodeo-vim-colorscheme'
 Plug 'fabi1cazenave/kalahari.vim' "best light colorscheme so far
 " Plug 'https://gitlab.com/yorickpeterse/vim-paper.git'
-Plug 'equt/paper.vim'
 Plug 'meain/hima-vim' "Really cool light theme bundle with dark one
+" THE DUSTY CHALKBOARD
+Plug 'morhetz/gruvbox'
 "Live Scratchpad
 Plug 'metakirby5/codi.vim'
 call plug#end()
