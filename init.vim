@@ -45,8 +45,8 @@ augroup colorscheme_change | au!
     au ColorScheme plain hi String guifg=#c5a332 gui=italic cterm=italic 
 augroup END
 
-colo plain
-set background=dark
+colo plainloco 
+set background=light
 
 "------------------------------------------------------------------------------
 " Float Term

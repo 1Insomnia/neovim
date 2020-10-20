@@ -1,0 +1,157 @@
+; vim: ft=colortemplate
+Full name: primordial
+Short name: primordial
+Description: White background colorscheme
+Author: R0B0T <jeremy.pro.lp@gmail.com>
+Neovim: yes
+
+
+Variant:    gui 256
+
+Background: light
+
+
+; Color palette
+Color: bg0  #f9f9f9 1
+Color: fg0  #383a42 1
+Color: comment  #a0a1a7 1
+Color: keyword  #0098dd 1
+Color: function  #23974a 1
+Color: method  #a05a48 1
+Color: property  #c5a332 1
+Color: string  #ce33c0 1
+Color: number  #823ff1 1
+Color: constant  #275fe4 1
+Color: markupTag  #df631c 1
+Color: markupAttribute  #d52753 1
+Color: class  #d52753 1
+Color: type  #d52753 1
+Color: interface  #7a82da 1
+Color: operator  #7a82da 1
+Color: punctuation  #7a82da 1
+Color: statement #23974a 1
+Color: preproc #a05a48 1
+Color: identifier #275fe4 1
+Color: special    #0098dd 1
+Color: delimiter  #a05a48 1
+
+Color: folded     #e0e4e4 1 
+Color: cursorline #f4f4f4 1 
+Color: visual     #d0d9ea 1 
+Color: error      #d52753 1 
+Color: diffadd    #23974a 1
+Color: diffchange #f9f9c9 1
+Color: difftext   #f9d999 1 
+Color: diffdelete #f9c9c9 1
+
+
+;;; chrome
+
+Variant: gui
+#if get(g:, '@optionprefix_transp_bg0', 0) && !has('gui_running')
+Variant: 256
+#if get(g:, '@optionprefix_transp_bg0', 0)
+Variant: gui 256
+Normal           fg0        bg0
+#else
+Normal           fg0        bg0
+#endif
+
+EndOfBuffer      bg0        none
+Statusline       fg0        bg0
+StatuslineNC     comment    bg0
+StatuslineTerm   fg0        bg0
+StatuslineTermNC comment    bg0
+VertSplit        bg0        bg0
+
+Pmenu            none       bg0
+PmenuSel         bg0        preproc
+PmenuSbar        none       bg0
+PmenuThumb       none       comment
+
+TabLine          comment    bg0
+TabLineFill      none       bg0
+TabLineSel       none       bg0
+
+ToolbarLine      bg0        folded
+ToolbarButton    none       bg0 bold
+
+NonText          bg0        none
+SpecialKey       bg0        none
+
+Folded           comment    folded
+Visual           none       visual
+VisualNOS        none       comment
+LineNr           comment    none
+FoldColumn       comment    none
+CursorLine       none       cursorline
+CursorColumn     none       cursorline
+CursorLineNr     none       cursorline
+QuickFixLine     none       folded
+SignColumn       none       none
+
+Underlined       identifier none   underline
+
+Error            error      bg0
+ErrorMsg         error      bg0
+ModeMsg          fg0        none   bold
+WarningMsg       preproc    none   bold
+MoreMsg          string     none   bold
+Question         string     none   bold
+
+Todo             bg0        comment
+MatchParen       bg0        special
+Search           bg0        preproc
+IncSearch        bg0        string
+WildMenu         bg0        preproc
+ColorColumn      none       cursorline
+Cursor           bg0        fg0
+lCursor          fg0        constant
+
+DiffAdd          none       diffadd
+DiffChange       none       diffchange
+DiffText         none       difftext
+DiffDelete       comment    diffdelete
+
+SpellBad         statement  none   t=underline g=undercurl s=statement
+SpellCap         string     none   t=underline g=undercurl s=string
+SpellLocal       special    none   t=underline g=undercurl s=special
+SpellRare        type       none   t=underline g=undercurl s=type
+
+
+Term colors: fg0     statement string preproc keyword type special bg0
+Term colors: comment statement string preproc keyword type special bg0
+
+
+;;; syntax
+
+Identifier keyword   bg0 
+Statement  keyword   bg0 
+Constant   constant  bg0 
+String     string    bg0 
+PreProc    preproc   bg0 
+Special    special   bg0 
+Tag        preproc   bg0 
+Delimiter  delimiter bg0 
+Type       type      bg0 
+Operator   operator   bg0 
+Directory  keyword bg0  bold 
+Comment    comment   bg0 
+Conceal    comment   bg0 
+Ignore     none      bg0 
+
+Title      statement  none bold
+
+colortemplateKey     -> Statement
+colortemplateAttr    -> String
+vimNotation          -> Type
+vimFuncSID           -> PreProc
+vimHiTerm            -> Identifier
+helpNotVi            -> Comment
+helpExample          -> PreProc
+gdscriptBlockStart   -> Statement
+gdscriptFunctionName -> Function
+gitCommitSummary     -> Title
+cocErrorSign         -> Type
+diffAdded            -> String
+diffRemoved          -> Error
