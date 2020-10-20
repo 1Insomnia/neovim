@@ -14,7 +14,7 @@ let s:light_black     = { "gui": "#424242", "cterm": "8"   }
 let s:lighter_black   = { "gui": "#545454", "cterm": "8" }
 let s:subtle_black    = { "gui": "#303030", "cterm": "11" }
 let s:light_gray      = { "gui": "#999999", "cterm": "12" }
-let s:lighter_gray    = { "gui": "#CCCCCC", "cterm": "7" }
+let s:lighter_gray    = { "gui": "#abb2bf", "cterm": "7" }
 let s:lightest_gray   = { "gui": "#E5E5E5", "cterm": "13" }
 let s:pink            = { "gui": "#FB007A", "cterm": "5"   }
 let s:dark_red        = { "gui": "#C30771", "cterm": "1"   }
@@ -52,7 +52,7 @@ if &background == "dark"
   let s:constant        = s:light_green
   let s:comment         = s:lighter_black
   let s:selection       = s:light_purple
-  let s:warning         = s:yellow
+  let s:warning         = s:orange
 else
   let s:bg              = s:white
   let s:bg_subtle       = s:lighter_gray
@@ -71,7 +71,7 @@ else
   let s:constant        = s:dark_blue
   let s:comment         = s:light_gray
   let s:selection       = s:light_yellow
-  let s:warning         = s:yellow
+  let s:warning         = s:orange
   let s:statement       = s:statement
 endif
 
@@ -93,7 +93,7 @@ call s:h("Cursor",        {"bg": s:green, "fg": s:norm})
 call s:h("Comment",       {"fg": s:comment, "cterm": "italic", "gui": "italic"})
 call s:h("Function",      {"fg": s:norm, "cterm": "bold"})
 
-call s:h("Constant",      {"bg": s:bg, "fg": s:yellow, "cterm" : "italic", "gui": "italic"})
+call s:h("Constant",      {"bg": s:bg, "fg": s:yellow}) 
 hi! link Character        Constant
 hi! link Number           Constant
 hi! link Boolean          Constant
@@ -148,7 +148,7 @@ call s:h("Search",        {"bg": s:selection, "fg": s:black})
 call s:h("MoreMsg",       {"fg": s:medium_gray, "cterm": "bold", "gui": "bold"})
 hi! link ModeMsg MoreMsg
 call s:h("LineNr",        {"fg": s:medium_gray})
-call s:h("CursorLineNr",  {"fg": s:green, "bg": s:bg_very_subtle})
+call s:h("CursorLineNr",  {"fg": s:red, "bg": s:bg})
 call s:h("Question",      {"fg": s:red})
 call s:h("VertSplit",     {"bg": s:bg, "fg": s:bg_very_subtle})
 call s:h("Title",         {"fg": s:dark_green})

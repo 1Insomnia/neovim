@@ -2,19 +2,6 @@ let mapleader = "\<Space>"
 set shell=/bin/zsh
 source $HOME/.config/nvim/coc.vim 
 source $HOME/.config/nvim/plugs.vim
-" True color support
-if (empty($TMUX))
-  if (has("nvim"))
-  "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  endif
-  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
-  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
-  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
-  if (has("termguicolors"))
-    set termguicolors
-  endif
-endif
 
 " general settings
 set nobackup
@@ -34,19 +21,20 @@ set dir=/tmp
 " let g:sonokai_style = 'espresso'
 " let g:sonokai_enable_italic = 1
 "colorscheme kalahari "best light colortheme so far
-augroup colorscheme_change | au!
-    au ColorScheme polar hi Comment gui=italic cterm=italic
-    au ColorScheme polar hi Statement gui=italic cterm=italic
-augroup END
+" augroup colorscheme_change | au!
+"     au ColorScheme polar hi Comment gui=italic cterm=italic
+"     au ColorScheme polar hi Statement gui=italic cterm=italic
+" augroup END
 
-augroup colorscheme_change | au!
-    au ColorScheme plain hi Comment gui=italic cterm=italic
-    au ColorScheme plain hi Statement guifg=#0098dd gui=italic cterm=italic
-    au ColorScheme plain hi String guifg=#c5a332 gui=italic cterm=italic 
-augroup END
+" augroup colorscheme_change | au!
+"     au ColorScheme plain hi Comment gui=italic cterm=italic
+"     au ColorScheme plain hi Statement guifg=#0098dd gui=italic cterm=italic
+"     au ColorScheme plain hi String guifg=#c5a332 gui=italic cterm=italic 
+" augroup END
 
-colo plainloco 
-set background=light
+set termguicolors
+colo plainloco
+set background=dark
 
 "------------------------------------------------------------------------------
 " Float Term
@@ -170,7 +158,7 @@ let g:fzf_buffers_jump = 0
 
 map <leader>p :Files<CR>
 nnoremap <C-g> :GFiles<CR>
-nnoremap <C-p> :Files<CR>
+" nnoremap <C-p> :Files<CR>
 nnoremap <C-b> :Buffers<CR>
 
 map <leader>b :Buffers<CR>
@@ -247,10 +235,10 @@ set splitbelow                          " Horizontal splits will automatically b
 set splitright                          " Vertical splits will automatically be to the right
 set t_Co=256                            " Support 256 colors
 set conceallevel=0                      " So that I can see `` in markdown files
-set shiftwidth=4     " indent = 4 spaces
 set expandtab
-set tabstop=4        " tab = 4 spaces
-set softtabstop=4    " backspace through spaces
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
 set path+=**
 set updatetime=300
 set smarttab                            " Makes tabbing smarter will realize you have 2 vs 4
@@ -267,7 +255,7 @@ set signcolumn=yes                      " Always show the signcolumn, otherwise 
 set timeoutlen=500 "Default 1000ms
 set clipboard=unnamedplus               " Copy paste between vim and everything else
 set colorcolumn=80
-highlight ColorColumn ctermbg=0 guibg=pink
+highlight ColorColumn ctermbg=2 guibg=#f22c40
 set incsearch
 
 set wildignore+=.git,.hg,.svn
@@ -290,8 +278,7 @@ augroup indents
 augroup END
 
 " Very magic by default
-nnoremap ? ?\v
-nnoremap / /\v
+" nnoremap / /\v
 cnoremap %s/ %sm/
 
 " No arrow keys
@@ -303,7 +290,7 @@ inoremap <left> <nop>
 inoremap <right> <nop>
 
 " Left and right can switch buffers
-nnoremap <C-f> :Clap blines<CR>
+nnoremap <C-f> :BL<CR>
 nnoremap <left> :bp<CR>
 nnoremap <right> :bn<CR>
 " Reload config
@@ -330,6 +317,11 @@ set foldnestmax=10
 set nofoldenable
 set foldlevel=2
 
+" Let's do something crazy
+nnoremap / :Clap lines<CR>
+nnoremap ? :Clap<CR>
+nnoremap <C-p> :Clap files<CR>
+
 " Ugh
 :command! WQ wq
 :command! Wq wq
@@ -338,6 +330,7 @@ set foldlevel=2
 :command! Q q
 :command! PI :PlugInstall
 :command! S :source %
+:command! CT :ColorizerToggle
 
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 
@@ -349,5 +342,4 @@ hi CocInfoSign ctermfg=6
 
 hi CocInfoFloat ctermfg=7
 hi CocHintFloat ctermfg=7
-
 
