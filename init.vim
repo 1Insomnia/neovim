@@ -19,24 +19,30 @@ endif
 " general settings
 set nobackup
 set nowritebackup
-set noswapfile " get rid of swapfiles everywhere
+set noswapfile
 set dir=/tmp
 "------------------------------------------------------------------------------
 " Colorscheme
 "------------------------------------------------------------------------------
-set termguicolors
 " let g:material_terminal_italics = 1
 " let g:material_theme_style = 'default'
 " let g:material_theme_terminal_italics=1
-let g:tokyonight_style = 'storm' " available: night, storm
-let g:tokyonight_enable_italic = 1
+" let g:tokyonight_style = 'storm' " available: night, storm
+" let g:tokyonight_enable_italic = 1
 " let g:daycula_enable_italic = 1
 " let g:daycula_current_word = 'underline'
 " let g:sonokai_style = 'espresso'
 " let g:sonokai_enable_italic = 1
-" let g:sonokai_disable_italic_comment = 1
-colorscheme agila
-set background=dark
+"colorscheme kalahari "best light colortheme so far
+colo primordial
+set background=light
+"------------------------------------------------------------------------------
+" Float Term
+"------------------------------------------------------------------------------
+let g:floaterm_keymap_new    = '<F7>'
+let g:floaterm_keymap_prev   = '<F8>'
+let g:floaterm_keymap_next   = '<F9>'
+let g:floaterm_keymap_toggle = '<F12>'
 "------------------------------------------------------------------------------
 " Bracket pair colorizer
 "------------------------------------------------------------------------------
@@ -44,31 +50,24 @@ let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowTo
 "------------------------------------------------------------------------------
 " Better whitespaces
 "------------------------------------------------------------------------------
-"highlight SpecialKey ctermfg=12 guifg=DimGrey
-" highlight SpecialKey ctermfg=14 guifg=Yellow
 set list
-" set fillchars+=vert:│
 set fillchars=vert:\│
 " set listchars=tab:-▸,eol:↲,extends:»,precedes:«,space:•
-set listchars=tab:┊\ ,nbsp:␣,trail:•,extends:>,precedes:<
+set listchars=tab:┊\ ,nbsp:␣,space:•,extends:>,precedes:<,trail:•
 "------------------------------------------------------------------------------
 " Markdown
 "------------------------------------------------------------------------------
 " disable header folding
 let g:vim_markdown_folding_disabled = 1
-
 " do not use conceal feature, the implementation is not so good
 let g:vim_markdown_conceal = 0
-
 " disable math tex conceal feature
 let g:tex_conceal = ""
 let g:vim_markdown_math = 1
-
 " support front matter of various format
 let g:vim_markdown_frontmatter = 1  " for YAML format
 let g:vim_markdown_toml_frontmatter = 1  " for TOML format
 let g:vim_markdown_json_frontmatter = 1  " for JSON format
-
 " Pandoc syntax
 augroup pandoc_syntax
     au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
@@ -96,7 +95,7 @@ let g:Illuminate_ftblacklist = ['javascript', 'jsx', 'html']
 "------------------------------------------------------------------------------
 augroup plaintext
     autocmd!
-    autocmd FileType text,markdown setlocal ts=2 sts=2 sw=2 expandtab textwidth=60
+    autocmd FileType text,markdown setlocal ts=2 sts=2 sw=2 expandtab textwidth=80 colorscheme
 augroup END
 
 augroup webdev
@@ -310,8 +309,8 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " Split plane
-nnoremap <A-H> :split<CR>
-nnoremap <A-V> :vsplit<CR>
+nnoremap <A-h> :split<CR>
+nnoremap <A-v> :vsplit<CR>
 
 " Code folding
 set foldmethod=indent
@@ -328,13 +327,6 @@ set foldlevel=2
 :command! PI :PlugInstall
 :command! S :source %
 
-" YEAH
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
-vnoremap X "_d
-" Replace current word with last yanked test
-nnoremap S diw"0P
-
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 
 " coc-nvim
@@ -345,3 +337,5 @@ hi CocInfoSign ctermfg=6
 
 hi CocInfoFloat ctermfg=7
 hi CocHintFloat ctermfg=7
+
+

@@ -1,10 +1,9 @@
 " auto-install vim-plug
-if empty(glob('~/.config/nvim/autoload/plug.vim'))
-  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  "autocmd VimEnter * PlugInstall
-  autocmd VimEnter * PlugInstall | source $MYVIMRC
-endif
+"if empty(glob('~/.config/nvim/autoload/plug.vim')) silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+"    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"  "autocmd VimEnter * PlugInstall
+"  autocmd VimEnter * PlugInstall | source $MYVIMRC
+"endif
 
 call plug#begin('~/.config/nvim/autoload/plugged')
 " Completion and Synthax
@@ -29,6 +28,7 @@ Plug 'iamcco/markdown-preview.nvim'
 Plug 'alvan/vim-closetag'
 Plug 'scrooloose/nerdtree'
 Plug 'machakann/vim-highlightedyank'
+Plug 'voldikss/vim-floaterm'
 " FZF
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -44,36 +44,36 @@ Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
 Plug 'liuchengxu/vim-clap', { 'do': { -> clap#installer#force_download() } }
 Plug 'liuchengxu/vim-clap', { 'do': has('win32') ? 'cargo build --release' : 'make' }
 " Colorscheme
+Plug 'adigitoleo/vim-mellow' "light and dark theme pretty plain
+Plug 'khadegd/vim-isaac-theme'
+Plug 'https://gitlab.com/yorickpeterse/vim-paper.git'
 " Nerdy
 Plug 'nerdypepper/agila.vim'
-Plug 'nerdypepper/chestnut.vim'
 Plug 'nerdypepper/vim-colors-plain', { 'branch': 'duotone' }
+Plug 'axvr/photon.vim'
 " Dark
 Plug 'tomasiser/vim-code-dark'
+Plug 'junegunn/seoul256.vim' 
+Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 " Dark colorful
+Plug 'desmap/slick'
 Plug 'joshdick/onedark.vim'
 Plug 'Rigellute/shades-of-purple.vim'
 Plug 'aonemd/kuroi.vim'
 Plug 'bluz71/vim-moonfly-colors'
 Plug 'bluz71/vim-nightfly-guicolors'
-Plug 'Rigellute/rigel'
 Plug 'koirand/tokyo-metro.vim'
 Plug 'ghifarit53/sonokai'
 Plug 'rakr/vim-colors-rakr'
 " Outrun/Cyber
 Plug 'ghifarit53/tokyonight-vim'
 Plug 'ntk148v/vim-horizon'
-Plug 'yuttie/hydrangea-vim'
 Plug 'ghifarit53/daycula-vim' , {'branch' : 'main'}
+Plug 'embark-theme/vim', { 'as': 'embark' }
 "Light colorful
 Plug 'tacahiroy/vim-colors-isotake'
-Plug 'schickele/vim-fruchtig'
 Plug 'NLKNguyen/papercolor-theme'
-Plug 'michaelmalick/vim-colors-bluedrake'
-Plug 'yasukotelin/shirotelin'
-Plug 'arzg/vim-colors-xcode'
 Plug 'fabi1cazenave/kalahari.vim' "best light colorscheme so far
-" Plug 'https://gitlab.com/yorickpeterse/vim-paper.git'
 Plug 'meain/hima-vim' "Really cool light theme bundle with dark one
 " THE DUSTY CHALKBOARD
 Plug 'morhetz/gruvbox'
