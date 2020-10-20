@@ -71,12 +71,14 @@ Plug 'ntk148v/vim-horizon'
 Plug 'ghifarit53/daycula-vim' , {'branch' : 'main'}
 Plug 'embark-theme/vim', { 'as': 'embark' }
 "Light colorful
+Plug 'habamax/vim-polar'
 Plug 'tacahiroy/vim-colors-isotake'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'fabi1cazenave/kalahari.vim' "best light colorscheme so far
 Plug 'meain/hima-vim' "Really cool light theme bundle with dark one
 " THE DUSTY CHALKBOARD
 Plug 'morhetz/gruvbox'
+Plug 'lifepillar/vim-colortemplate'
 "Live Scratchpad
 Plug 'metakirby5/codi.vim'
 call plug#end()

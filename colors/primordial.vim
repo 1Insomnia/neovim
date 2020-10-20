@@ -1,17 +1,3 @@
-" Name:       plain.vim
-" Version:    0.1
-" Maintainer: github.com/andreypopp
-" License:    The MIT License (MIT)
-"
-" Based on
-"
-"   https://github.com/pbrisbin/vim-colors-off (MIT License)
-"
-" which in turn based on
-"
-"   https://github.com/reedes/vim-colors-pencil (MIT License)
-"
-"""
 hi clear
 
 if exists('syntax on')
@@ -88,7 +74,7 @@ elseif &background == "light"
   let s:constant        = s:yellow
   let s:comment         = s:light_gray
   let s:selection       = s:light_yellow
-  let s:warning         = s:yellow
+  let s:warning         = s:dark_red
   let s:cursor          = s:cursor
 endif
 
@@ -104,13 +90,13 @@ function! s:h(group, style)
     \ "cterm="   (has_key(a:style, "cterm") ? a:style.cterm    : "NONE")
 endfunction
 
-call s:h("Normal",        {"bg": s:bg, "fg": s:norm,})
+call s:h("Normal",        {"bg": s:bg, "fg": s:norm})
 call s:h("Noise",         {"bg": s:bg, "fg": s:norm_subtle})
 call s:h("Cursor",        {"bg": s:bg, "fg": s:cursor})
 call s:h("Comment",       {"fg": s:comment, "cterm": "italic"})
 call s:h("Function",      {"fg": s:norm, "cterm": "bold"})
 
-call s:h("Constant",      {"bg": s:bg, "fg": s:yellow})
+call s:h("Constant",      {"bg": s:bg, "fg": s:yellow, "cterm": "italic", "gui": "italic"})
 hi! link Character        Constant
 hi! link Number           Constant
 hi! link Boolean          Constant
@@ -121,12 +107,12 @@ hi! link String           Constant
 hi! link Identifier       Normal
 
 "hi! link Statement        Normal
-call s:h("Statement",     {"bg": s:bg, "fg": s:norm, "cterm": "bold"})
+call s:h("Statement",     {"bg": s:bg, "fg": s:norm, "cterm": "italic", "gui": "italic"})
 hi! link Conditonal       Statement
 hi! link Repeat           Statement
 hi! link Label            Statement
 hi! link Operator         Noise
-hi! link Keyword          Statement
+hi! link Keyword          Statement 
 hi! link Exception        Statement
 
 "call s:h("PreProc",       {"fg": s:red})

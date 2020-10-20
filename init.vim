@@ -34,8 +34,20 @@ set dir=/tmp
 " let g:sonokai_style = 'espresso'
 " let g:sonokai_enable_italic = 1
 "colorscheme kalahari "best light colortheme so far
-colo primordial
-set background=light
+augroup colorscheme_change | au!
+    au ColorScheme polar hi Comment gui=italic cterm=italic
+    au ColorScheme polar hi Statement gui=italic cterm=italic
+augroup END
+
+augroup colorscheme_change | au!
+    au ColorScheme plain hi Comment gui=italic cterm=italic
+    au ColorScheme plain hi Statement guifg=#0098dd gui=italic cterm=italic
+    au ColorScheme plain hi String guifg=#c5a332 gui=italic cterm=italic 
+augroup END
+
+colo plain
+set background=dark
+
 "------------------------------------------------------------------------------
 " Float Term
 "------------------------------------------------------------------------------
