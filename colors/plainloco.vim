@@ -6,38 +6,63 @@ endif
 
 let g:colors_name='plainloco'
 
-let s:black           = { "gui": "#222222", "cterm": "0"   }
+let s:black           = { "gui": "#222222", "cterm": "0" }
+let s:dark_bg         = { "gui": "#f9f9f9", "cterm": "0" }
 let s:medium_gray     = { "gui": "#767676", "cterm": "8" }
-let s:white           = { "gui": "#f9f9f9", "cterm": "7"  }
+let s:white           = { "gui": "#f9f9f9", "cterm": "7" }
 let s:actual_white    = { "gui": "#FFFFFF", "cterm": "15" }
-let s:light_black     = { "gui": "#424242", "cterm": "8"   }
+let s:light_black     = { "gui": "#424242", "cterm": "8" }
 let s:lighter_black   = { "gui": "#545454", "cterm": "8" }
 let s:subtle_black    = { "gui": "#303030", "cterm": "11" }
 let s:light_gray      = { "gui": "#999999", "cterm": "12" }
 let s:lighter_gray    = { "gui": "#abb2bf", "cterm": "7" }
 let s:lightest_gray   = { "gui": "#E5E5E5", "cterm": "13" }
-let s:pink            = { "gui": "#FB007A", "cterm": "5"   }
-let s:dark_red        = { "gui": "#C30771", "cterm": "1"   }
-let s:light_red       = { "gui": "#E32791", "cterm": "1"   }
+let s:pink            = { "gui": "#FB007A", "cterm": "5" }
+let s:dark_red        = { "gui": "#C30771", "cterm": "1" }
+let s:light_red       = { "gui": "#E32791", "cterm": "1" }
 let s:orange          = { "gui": "#D75F5F", "cterm": "9" }
-let s:darker_blue     = { "gui": "#005F87", "cterm": "4"  }
-let s:dark_blue       = { "gui": "#008EC4", "cterm": "4"   }
-let s:blue            = { "gui": "#20BBFC", "cterm": "4"  }
+let s:darker_blue     = { "gui": "#005F87", "cterm": "4" }
+let s:dark_blue       = { "gui": "#008EC4", "cterm": "4" }
+let s:blue            = { "gui": "#20BBFC", "cterm": "4" }
 let s:light_blue      = { "gui": "#B6D6FD", "cterm": "4" }
-let s:dark_cyan       = { "gui": "#20A5BA", "cterm": "6"   }
-let s:light_cyan      = { "gui": "#4FB8CC", "cterm": "6"  }
-let s:dark_green      = { "gui": "#10A778", "cterm": "6"   }
-let s:light_green     = { "gui": "#5FD7A7", "cterm": "6"  }
-let s:dark_purple     = { "gui": "#523C79", "cterm": "5"   }
-let s:light_purple    = { "gui": "#6855DE", "cterm": "5"  }
-let s:light_yellow    = { "gui": "#F3E430", "cterm": "3"  }
-let s:dark_yellow     = { "gui": "#c5a332", "cterm": "3"   }
-let s:statement       = { "gui": "#0098dd", "cterm": "3"   }
+let s:dark_cyan       = { "gui": "#20A5BA", "cterm": "6" }
+let s:light_cyan      = { "gui": "#4FB8CC", "cterm": "6" }
+let s:dark_green      = { "gui": "#10A778", "cterm": "6" }
+let s:light_green     = { "gui": "#5FD7A7", "cterm": "6" }
+let s:dark_purple     = { "gui": "#523C79", "cterm": "5" }
+let s:light_purple    = { "gui": "#6855DE", "cterm": "5" }
+let s:light_yellow    = { "gui": "#F3E430", "cterm": "3" }
+let s:dark_yellow     = { "gui": "#c5a332", "cterm": "3" }
+let s:statement       = { "gui": "#0098dd", "cterm": "3" }
+" Dark theme
+" Edition
+let s:dark_bg         = { "gui": "#282c34", "cterm": "0" }
+let s:dark_fg         = { "gui": "#abb2bf", "cterm": "0" }
+let s:dark_line_nr    = { "gui": "#ffcc00", "cterm": "0" }
+let s:dark_comment    = { "gui": "#636d83", "cterm": "0" }
+let s:dark_selection  = { "gui": "#2b72c9", "cterm": "3" }
+" Errors & warning
+let s:dark_error      = { "gui": "#ff2e3f", "cterm": "1" }
+let s:dark_warning    = { "gui": "#da7a43", "cterm": "1" }
+" Git
+" Diff
+let s:dark_diff_add   = { "gui": "#37bd58", "cterm": "2" }
+let s:dark_diff_change = { "gui": "#2b663f", "cterm": "2" }
+" Gutter
+let s:dark_gutter_add = { "gui": "#237236", "cterm": "2" }
+let s:dark_gutter_delete = { "gui": "#745b53", "cterm": "2" }
+let s:dark_gutter_change = { "gui": "#015f88", "cterm": "2" }
+let s:dark_gutter_change_delete = { "gui": "#9c1e37", "cterm": "2" }
+"
+" Light theme
+let s:light_bg        = { "gui": "#f9f9f9", "cterm": "0" }
+let s:light_fg        = { "gui": "#383a42", "cterm": "0" }
 
 if &background == "dark"
-  let s:bg              = s:black
+  let s:bg              = s:dark_bg
   let s:bg_subtle       = s:light_black
   let s:bg_very_subtle  = s:subtle_black
+  let s:fg              = s:dark_fg
   let s:norm            = s:lighter_gray
   let s:norm_subtle     = s:light_gray
   let s:purple          = s:light_purple
@@ -50,13 +75,24 @@ if &background == "dark"
   let s:status_line     = s:medium_gray
   let s:status_line_nc  = s:light_black
   let s:constant        = s:light_green
-  let s:comment         = s:lighter_black
-  let s:selection       = s:light_purple
-  let s:warning         = s:orange
+  let s:comment         = s:dark_comment
+  let s:selection       = s:dark_selection
+  let s:warning         = s:dark_warning
+  let s:error           = s:dark_error
+  let s:lineNr          = s:dark_line_nr
+  "Diff
+  let s:diff_add        = s:dark_diff_add
+  let s:diff_change     = s:dark_diff_change
+  " Gutter
+  let s:gutter_add      = s:dark_gutter_add
+  let s:gutter_delete   = s:dark_gutter_delete
+  let s:gutter_change   = s:dark_gutter_change
+  let s:gutter_change_delete  = s:dark_gutter_change_delete
 else
-  let s:bg              = s:white
+  let s:bg              = s:light_bg
   let s:bg_subtle       = s:lighter_gray
   let s:bg_very_subtle  = s:light_gray
+  let s:fg              = s:light_fg
   let s:norm            = s:light_black
   let s:norm_subtle     = s:lighter_black
   let s:purple          = s:dark_purple
@@ -87,11 +123,11 @@ function! s:h(group, style)
     \ "cterm="   (has_key(a:style, "cterm") ? a:style.cterm    : "NONE")
 endfunction
 
-call s:h("Normal",        {"bg": s:bg, "fg": s:norm,})
+call s:h("Normal",        {"bg": s:bg, "fg": s:fg,})
 call s:h("Noise",         {"bg": s:bg, "fg": s:norm_subtle})
-call s:h("Cursor",        {"bg": s:green, "fg": s:norm})
+call s:h("Cursor",        {"bg": s:bg, "fg": s:red})
 call s:h("Comment",       {"fg": s:comment, "cterm": "italic", "gui": "italic"})
-call s:h("Function",      {"fg": s:norm, "cterm": "bold"})
+call s:h("Function",      {"fg": s:fg, "cterm": "bold", "gui": "bold"})
 
 call s:h("Constant",      {"bg": s:bg, "fg": s:yellow}) 
 hi! link Character        Constant
@@ -110,7 +146,7 @@ hi! link Repeat           Statement
 hi! link Label            Statement
 hi! link Operator         Noise
 hi! link Keyword          Statement
-hi! link Exception        Statement
+hi! link Exception        Statement 
 
 "call s:h("PreProc",       {"fg": s:red})
 hi! link PreProc          Normal
@@ -137,18 +173,18 @@ hi! link Conceal          NonText
 
 call s:h("Underlined",    {"fg": s:norm, "gui": "underline", "cterm": "underline"})
 call s:h("Ignore",        {"fg": s:bg})
-call s:h("Error",         {"fg": s:red, "bg": s:bg, "cterm": "bold"})
+call s:h("Error",         {"fg": s:error, "bg": s:bg, "cterm": "bold"})
 call s:h("Todo",          {"fg": s:actual_white, "bg": s:black, "gui": "bold", "cterm": "bold"})
 call s:h("SpecialKey",    {"fg": s:subtle_black})
 call s:h("NonText",       {"fg": s:bg_very_subtle})
 call s:h("Directory",     {"fg": s:dark_green})
-call s:h("ErrorMsg",      {"fg": s:pink})
+call s:h("ErrorMsg",      {"fg": s:error})
 call s:h("IncSearch",     {"bg": s:selection, "fg": s:black})
 call s:h("Search",        {"bg": s:selection, "fg": s:black})
 call s:h("MoreMsg",       {"fg": s:medium_gray, "cterm": "bold", "gui": "bold"})
 hi! link ModeMsg MoreMsg
 call s:h("LineNr",        {"fg": s:medium_gray})
-call s:h("CursorLineNr",  {"fg": s:red, "bg": s:bg})
+call s:h("CursorLineNr",  {"fg": s:lineNr, "bg": s:bg})
 call s:h("Question",      {"fg": s:red})
 call s:h("VertSplit",     {"bg": s:bg, "fg": s:bg_very_subtle})
 call s:h("Title",         {"fg": s:dark_green})
@@ -158,19 +194,19 @@ call s:h("WarningMsg",    {"fg": s:warning})
 call s:h("WildMenu",      {"fg": s:white, "bg": s:bg})
 call s:h("Folded",        {"fg": s:medium_gray})
 call s:h("FoldColumn",    {"fg": s:bg_subtle})
-call s:h("DiffAdd",       {"fg": s:green})
+call s:h("DiffAdded",     {"fg": s:diff_add})
 call s:h("DiffDelete",    {"fg": s:red})
-call s:h("DiffChange",    {"fg": s:dark_yellow})
+call s:h("DiffChange",    {"fg": s:diff_change})
 call s:h("DiffText",      {"fg": s:dark_green})
 call s:h("SignColumn",    {"fg": s:medium_gray})
 
 if has("gui_running")
-  call s:h("SpellBad",    {"gui": "underline", "sp": s:red})
+  call s:h("SpellBad",    {"gui": "underline", "sp": s:error})
   call s:h("SpellCap",    {"gui": "underline", "sp": s:light_green})
   call s:h("SpellRare",   {"gui": "underline", "sp": s:pink})
   call s:h("SpellLocal",  {"gui": "underline", "sp": s:dark_green})
 else
-  call s:h("SpellBad",    {"cterm": "underline", "fg": s:red})
+  call s:h("SpellBad",    {"cterm": "underline", "fg": s:error})
   call s:h("SpellCap",    {"cterm": "underline", "fg": s:light_green})
   call s:h("SpellRare",   {"cterm": "underline", "fg": s:pink})
   call s:h("SpellLocal",  {"cterm": "underline", "fg": s:dark_green})
@@ -188,7 +224,7 @@ call s:h("StatusLineNC",      {"bg": s:bg, "fg": s:status_line_nc})
 " Those are not standard but are useful to emphasis different parts of the
 " status line.
 call s:h("StatusLineOk",      {"gui": "underline", "bg": s:bg, "fg": s:green})
-call s:h("StatusLineError",   {"gui": "underline", "bg": s:bg, "fg": s:pink})
+call s:h("StatusLineError",   {"gui": "underline", "bg": s:bg, "fg": s:error})
 call s:h("StatusLineWarning", {"gui": "underline", "bg": s:bg, "fg": s:warning})
 
 call s:h("Pmenu",         {"fg": s:norm, "bg": s:bg_very_subtle})
@@ -212,7 +248,7 @@ call s:h("htmlH4",        {"bg": s:bg, "fg": s:norm})
 call s:h("htmlH5",        {"bg": s:bg, "fg": s:norm})
 call s:h("htmlH6",        {"bg": s:bg, "fg": s:norm})
 
-call s:h("htmlBold",      {"bg": s:bg, "fg": s:norm})
+call s:h("htmlBold",      {"bg": s:bg, "fg": s:norm, "gui": "bold"})
 call s:h("htmlItalic",    {"bg": s:bg, "fg": s:norm})
 call s:h("htmlEndTag",    {"bg": s:bg, "fg": s:norm})
 call s:h("htmlTag",       {"bg": s:bg, "fg": s:norm})
@@ -228,15 +264,20 @@ call s:h("javaScriptNumber",     {"bg": s:bg, "fg": s:green})
 
 hi link diffRemoved       DiffDelete
 hi link diffAdded         DiffAdd
+hi link diffChanged       DiffChanged
 
+call s:h("GutterAdd",     {"bg": s:bg, "fg": s:gutter_add})
+call s:h("GutterDelete",  {"bg": s:bg, "fg": s:gutter_delete})
+call s:h("GutterChange",  {"bg": s:bg, "fg": s:gutter_change})
+call s:h("GutterChangeDelete",  {"bg": s:bg, "fg": s:gutter_change_delete})
 " Signify, git-gutter
-hi link SignifySignAdd              LineNr
-hi link SignifySignDelete           LineNr
-hi link SignifySignChange           LineNr
-hi link GitGutterAdd                LineNr
-hi link GitGutterDelete             LineNr
-hi link GitGutterChange             LineNr
-hi link GitGutterChangeDelete       LineNr
+hi link SignifySignAdd              GutterAdd
+hi link SignifySignDelete           GutterDelete
+hi link SignifySignChange           GutterChange
+hi link GitGutterAdd                GutterAdd
+hi link GitGutterDelete             GutterDelete
+hi link GitGutterChange             GutterChange
+hi link GitGutterChangeDelete       GutterChangeDelete
 
 hi link jsFlowTypeKeyword Statement
 hi link jsFlowImportType Statement
