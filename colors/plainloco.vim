@@ -7,7 +7,7 @@ endif
 let g:colors_name='plainloco'
 
 let s:black           = { "gui": "#222222", "cterm": "0" }
-let s:dark_bg         = { "gui": "#f9f9f9", "cterm": "0" }
+let s:dark_bg         = { "gui": "#f9f9f9", "cterm": "7" }
 let s:medium_gray     = { "gui": "#636d83", "cterm": "8" }
 let s:white           = { "gui": "#f9f9f9", "cterm": "7" }
 let s:actual_white    = { "gui": "#FFFFFF", "cterm": "15" }
@@ -17,10 +17,10 @@ let s:subtle_black    = { "gui": "#3d434f", "cterm": "11" }
 let s:light_gray      = { "gui": "#999999", "cterm": "12" }
 let s:lighter_gray    = { "gui": "#abb2bf", "cterm": "7" }
 let s:lightest_gray   = { "gui": "#E5E5E5", "cterm": "13" }
-let s:pink            = { "gui": "#FB007A", "cterm": "5" }
-let s:dark_red        = { "gui": "#C30771", "cterm": "1" }
-let s:light_red       = { "gui": "#E32791", "cterm": "1" }
-let s:orange          = { "gui": "#D75F5F", "cterm": "9" }
+let s:pink            = { "gui": "#FB007A", "cterm": "9" }
+let s:dark_red        = { "gui": "#C30771", "cterm": "9" }
+let s:light_red       = { "gui": "#E32791", "cterm": "9" }
+let s:orange          = { "gui": "#D75F5F", "cterm": "11" }
 let s:darker_blue     = { "gui": "#005F87", "cterm": "4" }
 let s:dark_blue       = { "gui": "#008EC4", "cterm": "4" }
 let s:blue            = { "gui": "#20BBFC", "cterm": "4" }
@@ -37,9 +37,9 @@ let s:statement       = { "gui": "#0098dd", "cterm": "3" }
 " Dark theme
 " Edition
 let s:dark_bg         = { "gui": "#282c34", "cterm": "0" }
-let s:dark_fg         = { "gui": "#abb2bf", "cterm": "0" }
-let s:dark_line_nr    = { "gui": "#ffcc00", "cterm": "0" }
-let s:dark_comment    = { "gui": "#636d83", "cterm": "0" }
+let s:dark_fg         = { "gui": "#abb2bf", "cterm": "9" }
+let s:dark_line_nr    = { "gui": "#ffcc00", "cterm": "3" }
+let s:dark_comment    = { "gui": "#636d83", "cterm": "9" }
 let s:dark_selection  = { "gui": "#2b72c9", "cterm": "3" }
 " Errors & warning
 let s:dark_error      = { "gui": "#ff2e3f", "cterm": "1" }
@@ -52,7 +52,7 @@ let s:dark_diff_change = { "gui": "#2b663f", "cterm": "2" }
 let s:dark_gutter_add = { "gui": "#237236", "cterm": "2" }
 let s:dark_gutter_delete = { "gui": "#745b53", "cterm": "2" }
 let s:dark_gutter_change = { "gui": "#015f88", "cterm": "2" }
-let s:dark_gutter_change_delete = { "gui": "#9c1e37", "cterm": "2" }
+let s:dark_gutter_change_delete = { "gui": "#9c1e37", "cterm": "1" }
 " Visual
 let s:dark_title = { "gui": "#abb2bf", "cterm": "2" }
 let s:dark_ruler = { "gui": "#3d434f", "cterm": "9"}

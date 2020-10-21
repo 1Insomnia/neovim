@@ -31,10 +31,10 @@ set dir=/tmp
 "     au ColorScheme plain hi Statement guifg=#0098dd gui=italic cterm=italic
 "     au ColorScheme plain hi String guifg=#c5a332 gui=italic cterm=italic 
 " augroup END
-
 set termguicolors
 colo plainloco
 set background=dark
+let g:airline_theme="atomic"
 
 "------------------------------------------------------------------------------
 " Float Term
@@ -263,7 +263,7 @@ set signcolumn=yes                      " Always show the signcolumn, otherwise 
 set timeoutlen=500 "Default 1000ms
 set clipboard=unnamedplus               " Copy paste between vim and everything else
 set colorcolumn=80
-highlight ColorColumn 
+highlight ColorColumn guibg=#3d434f
 set incsearch
 
 set wildignore+=.git,.hg,.svn
