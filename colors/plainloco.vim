@@ -8,12 +8,12 @@ let g:colors_name='plainloco'
 
 let s:black           = { "gui": "#222222", "cterm": "0" }
 let s:dark_bg         = { "gui": "#f9f9f9", "cterm": "0" }
-let s:medium_gray     = { "gui": "#767676", "cterm": "8" }
+let s:medium_gray     = { "gui": "#636d83", "cterm": "8" }
 let s:white           = { "gui": "#f9f9f9", "cterm": "7" }
 let s:actual_white    = { "gui": "#FFFFFF", "cterm": "15" }
 let s:light_black     = { "gui": "#424242", "cterm": "8" }
 let s:lighter_black   = { "gui": "#545454", "cterm": "8" }
-let s:subtle_black    = { "gui": "#303030", "cterm": "11" }
+let s:subtle_black    = { "gui": "#3d434f", "cterm": "11" }
 let s:light_gray      = { "gui": "#999999", "cterm": "12" }
 let s:lighter_gray    = { "gui": "#abb2bf", "cterm": "7" }
 let s:lightest_gray   = { "gui": "#E5E5E5", "cterm": "13" }
@@ -53,6 +53,9 @@ let s:dark_gutter_add = { "gui": "#237236", "cterm": "2" }
 let s:dark_gutter_delete = { "gui": "#745b53", "cterm": "2" }
 let s:dark_gutter_change = { "gui": "#015f88", "cterm": "2" }
 let s:dark_gutter_change_delete = { "gui": "#9c1e37", "cterm": "2" }
+" Visual
+let s:dark_title = { "gui": "#abb2bf", "cterm": "2" }
+let s:dark_ruler = { "gui": "#3d434f", "cterm": "9"}
 "
 " Light theme
 let s:light_bg        = { "gui": "#f9f9f9", "cterm": "0" }
@@ -88,6 +91,9 @@ if &background == "dark"
   let s:gutter_delete   = s:dark_gutter_delete
   let s:gutter_change   = s:dark_gutter_change
   let s:gutter_change_delete  = s:dark_gutter_change_delete
+  " Visual
+  let s:title           = s:dark_title
+  let s:ruler           = s:dark_ruler
 else
   let s:bg              = s:light_bg
   let s:bg_subtle       = s:lighter_gray
@@ -136,7 +142,7 @@ hi! link Boolean          Constant
 hi! link Float            Constant
 hi! link String           Constant
 
-"call s:h("Identifier",    {"fg": s:dark_blue})
+" call s:h("Identifier",    {"fg": s:red})
 hi! link Identifier       Normal
 
 "hi! link Statement        Normal
@@ -177,21 +183,21 @@ call s:h("Error",         {"fg": s:error, "bg": s:bg, "cterm": "bold"})
 call s:h("Todo",          {"fg": s:actual_white, "bg": s:black, "gui": "bold", "cterm": "bold"})
 call s:h("SpecialKey",    {"fg": s:subtle_black})
 call s:h("NonText",       {"fg": s:bg_very_subtle})
-call s:h("Directory",     {"fg": s:dark_green})
+call s:h("Directory",     {"fg": s:blue})
 call s:h("ErrorMsg",      {"fg": s:error})
-call s:h("IncSearch",     {"bg": s:selection, "fg": s:black})
-call s:h("Search",        {"bg": s:selection, "fg": s:black})
+call s:h("IncSearch",     {"bg": s:selection, "fg": s:bg})
+call s:h("Search",        {"bg": s:selection, "fg": s:bg})
 call s:h("MoreMsg",       {"fg": s:medium_gray, "cterm": "bold", "gui": "bold"})
 hi! link ModeMsg MoreMsg
 call s:h("LineNr",        {"fg": s:medium_gray})
 call s:h("CursorLineNr",  {"fg": s:lineNr, "bg": s:bg})
-call s:h("Question",      {"fg": s:red})
+call s:h("Question",      {"fg": s:warning})
 call s:h("VertSplit",     {"bg": s:bg, "fg": s:bg_very_subtle})
-call s:h("Title",         {"fg": s:dark_green})
+call s:h("Title",         {"fg": s:title})
 call s:h("Visual",        {"bg": s:visual})
 call s:h("VisualNOS",     {"bg": s:bg_subtle})
 call s:h("WarningMsg",    {"fg": s:warning})
-call s:h("WildMenu",      {"fg": s:white, "bg": s:bg})
+call s:h("WildMenu",      {"fg": s:white, "bg": s:bg_subtle})
 call s:h("Folded",        {"fg": s:medium_gray})
 call s:h("FoldColumn",    {"fg": s:bg_subtle})
 call s:h("DiffAdded",     {"fg": s:diff_add})
@@ -234,7 +240,7 @@ call s:h("PmenuThumb",    {"fg": s:norm, "bg": s:bg_subtle})
 call s:h("TabLine",       {"fg": s:norm_subtle, "bg": s:bg})
 call s:h("TabLineSel",    {"fg": s:norm, "bg": s:bg, "gui": "bold", "cterm": "bold"})
 call s:h("TabLineFill",   {"fg": s:norm_subtle, "bg": s:bg})
-call s:h("CursorColumn",  {"bg": s:bg_very_subtle})
+call s:h("CursorColumn",  {"bg": s:ruler})
 call s:h("CursorLine",    {"bg": s:cursor_line})
 call s:h("ColorColumn",   {"bg": s:bg_subtle})
 

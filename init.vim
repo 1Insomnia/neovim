@@ -9,7 +9,7 @@ set nowritebackup
 set noswapfile
 set dir=/tmp
 "------------------------------------------------------------------------------
-" Colorscheme
+" Colorslut
 "------------------------------------------------------------------------------
 " let g:material_terminal_italics = 1
 " let g:material_theme_style = 'default'
@@ -36,6 +36,11 @@ set termguicolors
 colo plainloco
 set background=dark
 
+"------------------------------------------------------------------------------
+" Float Term
+"------------------------------------------------------------------------------
+let g:clap_theme = { 'search_text': {'guifg': 'green', 'ctermfg': 'red'} }
+autocmd FileType clap_input inoremap <silent> <buffer> <Esc> <Esc>:call clap#handler#exit()<CR>
 "------------------------------------------------------------------------------
 " Float Term
 "------------------------------------------------------------------------------
@@ -85,6 +90,9 @@ lua require'colorizer'.setup()
 "------------------------------------------------------------------------------
 "NERDTree
 "------------------------------------------------------------------------------
+set autochdir
+let NERDTreeChDirMode=2
+nnoremap <leader>n :NERDTree .<CR>
 nmap <C-n> :NERDTreeToggle<CR>
 "------------------------------------------------------------------------------
 "Illuminate
@@ -114,7 +122,7 @@ augroup END
 "Indent line
 "------------------------------------------------------------------------------
 let g:indentLine_char = '▏'
-" let g:indentLine_color_gui = '#FFF000'
+let g:indentLine_color_gui = '#565e6e'
 let g:indentLine_setColors = 1
 "------------------------------------------------------------------------------
 " Git Gutter
@@ -255,7 +263,7 @@ set signcolumn=yes                      " Always show the signcolumn, otherwise 
 set timeoutlen=500 "Default 1000ms
 set clipboard=unnamedplus               " Copy paste between vim and everything else
 set colorcolumn=80
-highlight ColorColumn ctermbg=2 guibg=#f22c40
+highlight ColorColumn 
 set incsearch
 
 set wildignore+=.git,.hg,.svn
@@ -278,7 +286,6 @@ augroup indents
 augroup END
 
 " Very magic by default
-" nnoremap / /\v
 cnoremap %s/ %sm/
 
 " No arrow keys
@@ -318,11 +325,13 @@ set nofoldenable
 set foldlevel=2
 
 " Let's do something crazy
-nnoremap / :Clap lines<CR>
+" nnoremap / :Clap blines<CR>
+nnoremap / /\v
 nnoremap ? :Clap<CR>
 nnoremap <C-p> :Clap files<CR>
 
 " Ugh
+:command! SPI :source % | :PlugInstall
 :command! WQ wq
 :command! Wq wq
 :command! Wqa wqa
