@@ -33,9 +33,8 @@ set dir=/tmp
 " augroup END
 set termguicolors
 colo plainloco
-set background=dark
 let g:airline_theme="atomic"
-
+set background=dark
 "------------------------------------------------------------------------------
 " Float Term
 "------------------------------------------------------------------------------
@@ -103,7 +102,7 @@ let g:Illuminate_ftblacklist = ['javascript', 'jsx', 'html']
 "------------------------------------------------------------------------------
 augroup plaintext
     autocmd!
-    autocmd FileType text,markdown setlocal ts=2 sts=2 sw=2 expandtab textwidth=80 colorscheme
+    autocmd FileType text setlocal ts=2 sts=2 sw=2 expandtab textwidth=80 colorscheme
 augroup END
 
 augroup webdev

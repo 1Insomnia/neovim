@@ -52,6 +52,7 @@ Plug 'nerdypepper/agila.vim'
 Plug 'nerdypepper/vim-colors-plain', { 'branch': 'duotone' }
 Plug 'axvr/photon.vim'
 " Dark
+Plug 'gerardbm/vim-atomic'
 Plug 'tomasiser/vim-code-dark'
 Plug 'junegunn/seoul256.vim' 
 Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }

@@ -41,6 +41,9 @@ let s:dark_fg         = { "gui": "#abb2bf", "cterm": "9" }
 let s:dark_line_nr    = { "gui": "#ffcc00", "cterm": "3" }
 let s:dark_comment    = { "gui": "#636d83", "cterm": "9" }
 let s:dark_selection  = { "gui": "#2b72c9", "cterm": "3" }
+let s:dark_operator   = { "gui": "#7a82da", "cterm": "3" }
+let s:dark_type       = { "gui": "#ff6480", "cterm": "3" }
+let s:dark_ma         = { "gui": "#f9c859", "cterm": "3" }
 " Errors & warning
 let s:dark_error      = { "gui": "#ff2e3f", "cterm": "1" }
 let s:dark_warning    = { "gui": "#da7a43", "cterm": "1" }
@@ -83,6 +86,9 @@ if &background == "dark"
   let s:warning         = s:dark_warning
   let s:error           = s:dark_error
   let s:lineNr          = s:dark_line_nr
+  let s:operator        = s:dark_operator
+  let s:type            = s:dark_type
+  let s:MA              = s:dark_ma
   "Diff
   let s:diff_add        = s:dark_diff_add
   let s:diff_change     = s:dark_diff_change
@@ -147,10 +153,10 @@ hi! link Identifier       Normal
 
 "hi! link Statement        Normal
 call s:h("Statement",     {"bg": s:bg, "fg": s:statement, "cterm": "italic", "gui": "italic"})
+call s:h("Operator",      {"bg": s:bg, "fg": s:operator})
 hi! link Conditonal       Statement
 hi! link Repeat           Statement
 hi! link Label            Statement
-hi! link Operator         Noise
 hi! link Keyword          Statement
 hi! link Exception        Statement 
 
@@ -161,11 +167,11 @@ hi! link Define           PreProc
 hi! link Macro            PreProc
 hi! link PreCondit        PreProc
 
-"call s:h("Type",          {"fg": s:purple})
+call s:h("Type",          {"fg": s:type})
 hi! link Type             Normal
-hi! link StorageClass     Type
-hi! link Structure        Type
-hi! link Typedef          Type
+" hi! link StorageClass     Type
+" hi! link Structure        Type
+" hi! link Typedef          Type
 
 "call s:h("Special",       {"fg": s:pink})
 hi! link Special          StatusLine
@@ -315,17 +321,18 @@ hi link xmlTagName xmlTag
 hi link xmlEndTag xmlTag
 hi link xmlAttrib xmlTag
 
-hi link markdownH1 Statement
-hi link markdownH2 Statement
-hi link markdownH3 Statement
-hi link markdownH4 Statement
-hi link markdownH5 Statement
-hi link markdownH6 Statement
+call s:h("Markdown", {"bg": s:bg, "fg": s:MA})
+hi link markdownH1 Markdown 
+hi link markdownH2 Markdown 
+hi link markdownH3 Markdown 
+hi link markdownH4 Markdown 
+hi link markdownH5 Markdown 
+hi link markdownH6 Markdown 
 hi link markdownListMarker Constant
 hi link markdownCode Constant
 hi link markdownCodeBlock Constant
 hi link markdownCodeDelimiter Constant
-hi link markdownHeadingDelimiter Constant
+hi link markdownHeadingDelimiter Markdown
 
 highlight Comment cterm=italic gui=italic
 
