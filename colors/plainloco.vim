@@ -44,6 +44,9 @@ let s:dark_selection  = { "gui": "#2b72c9", "cterm": "3" }
 let s:dark_operator   = { "gui": "#7a82da", "cterm": "3" }
 let s:dark_type       = { "gui": "#ff6480", "cterm": "3" }
 let s:dark_ma         = { "gui": "#f9c859", "cterm": "3" }
+let s:dark_class      = { "gui": "#ff6480", "cterm": "3" }
+let s:dark_func       = { "gui": "#3fc56b", "cterm": "3" }
+let s:dark_keyword    = { "gui": "#10b1fe", "cterm": "3" }
 " Errors & warning
 let s:dark_error      = { "gui": "#ff2e3f", "cterm": "1" }
 let s:dark_warning    = { "gui": "#da7a43", "cterm": "1" }
@@ -89,6 +92,9 @@ if &background == "dark"
   let s:operator        = s:dark_operator
   let s:type            = s:dark_type
   let s:MA              = s:dark_ma
+  let s:class           = s:dark_class
+  let s:func            = s:dark_func
+  let s:keyword         = s:dark_keyword
   "Diff
   let s:diff_add        = s:dark_diff_add
   let s:diff_change     = s:dark_diff_change
@@ -168,9 +174,10 @@ hi! link Macro            PreProc
 hi! link PreCondit        PreProc
 
 call s:h("Type",          {"fg": s:type})
+call s:h("Class",          {"fg": s:class})
 hi! link Type             Normal
-" hi! link StorageClass     Type
-" hi! link Structure        Type
+" hi! link StorageClass     Class
+hi! link Structure        Class
 " hi! link Typedef          Type
 
 "call s:h("Special",       {"fg": s:pink})
@@ -294,9 +301,17 @@ hi link GitGutterChangeDelete       GutterChangeDelete
 hi link jsFlowTypeKeyword Statement
 hi link jsFlowImportType Statement
 hi link jsFunction Function
+hi link jsClass Class
 hi link jsGlobalObjects Noise
 hi link jsGlobalNodeObjects Normal
 hi link jsSwitchCase Constant
+call s:h("jsThis", { "fg": s:fg, "gui": "italic"})
+call s:h("jsFunction", { "fg": s:keyword })
+call s:h("jsFuncCall", { "fg": s:func })
+call s:h("jsClassKeyword", { "fg": s:keyword })
+call s:h("jsClassMethodType", { "fg": s:class })
+call s:h("javaScriptIdentifier", { "fg": s:keyword })
+call s:h("jsStorageClass", { "fg": s:keyword })
 
 call s:h("jsSpreadOperator ",     {"bg": s:bg, "fg": s:selection})
 hi link jsReturn jsSpreadOperator
@@ -314,7 +329,7 @@ hi link shCommandSub jsSpreadOperator
 
 hi link cFormat jsSpreadOperator
 
-hi link StorageClass Statement
+hi link StorageClass Storage
 
 call s:h("xmlTag", {"bg": s:bg, "fg": s:constant})
 hi link xmlTagName xmlTag
