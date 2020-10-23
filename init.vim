@@ -11,30 +11,32 @@ set dir=/tmp
 "------------------------------------------------------------------------------
 " Colorslut
 "------------------------------------------------------------------------------
-" let g:material_terminal_italics = 1
-" let g:material_theme_style = 'default'
-" let g:material_theme_terminal_italics=1
+let g:material_terminal_italics = 1
+let g:material_theme_style = 'dark'
+let g:material_theme_terminal_italics=1
 " let g:tokyonight_style = 'storm' " available: night, storm
 " let g:tokyonight_enable_italic = 1
 " let g:daycula_enable_italic = 1
 " let g:daycula_current_word = 'underline'
 " let g:sonokai_style = 'espresso'
 " let g:sonokai_enable_italic = 1
-"colorscheme kalahari "best light colortheme so far
-" augroup colorscheme_change | au!
-"     au ColorScheme polar hi Comment gui=italic cterm=italic
-"     au ColorScheme polar hi Statement gui=italic cterm=italic
-" augroup END
+" let g:material_terminal_italics = 1
+let python_highlight_all=1
+set fillchars+=vert:│
+augroup colorscheme_change | au!
+    au ColorScheme * hi Comment gui=italic cterm=italic
+    au ColorScheme * hi JsThis gui=italic cterm=italic
+    au ColorScheme * hi JsClassKeyword gui=italic cterm=italic
+    au ColorScheme * hi Keyword gui=italic cterm=italic
+    au ColorScheme * hi pythonClassKeyword gui=italic cterm=italic
+    au ColorScheme * hi pythonClassVar gui=italic
+augroup END
 
-" augroup colorscheme_change | au!
-"     au ColorScheme plain hi Comment gui=italic cterm=italic
-"     au ColorScheme plain hi Statement guifg=#0098dd gui=italic cterm=italic
-"     au ColorScheme plain hi String guifg=#c5a332 gui=italic cterm=italic 
-" augroup END
 set termguicolors
-colo plainloco
-let g:airline_theme="atomic"
+colorscheme material
 set background=dark
+
+let g:airline_theme = 'material'
 "------------------------------------------------------------------------------
 " Float Term
 "------------------------------------------------------------------------------
@@ -79,9 +81,9 @@ augroup END
 "------------------------------------------------------------------------------
 " Closetag
 "------------------------------------------------------------------------------
-let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
-let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.js'
-let g:closetag_filetypes = 'html,xhtml,phtml,javascript'
+" let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
+" let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.js'
+" let g:closetag_filetypes = 'html,xhtml,phtml,javascript'
 "------------------------------------------------------------------------------
 " Colorizer
 "------------------------------------------------------------------------------
@@ -105,11 +107,11 @@ augroup plaintext
     autocmd FileType text setlocal ts=2 sts=2 sw=2 expandtab textwidth=80 colorscheme
 augroup END
 
-augroup webdev
-    autocmd!
-    autocmd FileType less,css,html,js?,ts? setlocal ts=2 sts=2 sw=2 expandtab
-    autocmd FileType less,css,html nnoremap <Leader>s viB:sort<cr>
-augroup END
+" augroup webdev
+    " autocmd!
+    " autocmd FileType less,css,html,js?,ts? setlocal ts=2 sts=2 sw=2 expandtab
+    " autocmd FileType less,css,html nnoremap <Leader>s viB:sort<cr>
+" augroup END
 
 augroup restorecursor
     autocmd BufReadPost *
@@ -165,7 +167,7 @@ let g:fzf_buffers_jump = 0
 
 map <leader>p :Files<CR>
 nnoremap <C-g> :GFiles<CR>
-" nnoremap <C-p> :Files<CR>
+nnoremap <C-p> :Files<CR>
 nnoremap <C-b> :Buffers<CR>
 
 map <leader>b :Buffers<CR>
@@ -225,8 +227,6 @@ endfunction
 
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 
-" nnoremap <C-f> :Rg
-
 "------------------------------------------------------------------------------
 " Defaults
 "------------------------------------------------------------------------------
@@ -276,13 +276,6 @@ set wildignore+=*.doc,*.pdf,*.cbr,*.cbz
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz,*.kgb
 set wildignore+=*.swp,.lock,.DS_Store,._*
 
-" augroups
-augroup indents
-    autocmd!
-    autocmd FileType less,css,scss,html setlocal ts=2 sts=2 sw=2 expandtab
-    autocmd FileType text,markdown setlocal expandtab
-    autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab
-augroup END
 
 " Very magic by default
 cnoremap %s/ %sm/
@@ -327,7 +320,7 @@ set foldlevel=2
 " nnoremap / :Clap blines<CR>
 nnoremap / /\v
 nnoremap ? :Clap<CR>
-nnoremap <C-p> :Clap files<CR>
+" nnoremap <C-p> :Clap files<CR>
 
 " Ugh
 :command! SPI :source % | :PlugInstall

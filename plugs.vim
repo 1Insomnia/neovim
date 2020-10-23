@@ -5,10 +5,12 @@
 "  autocmd VimEnter * PlugInstall | source $MYVIMRC
 "endif
 
+set nocompatible
 call plug#begin('~/.config/nvim/autoload/plugged')
 " Completion and Synthax
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot'
+Plug 'liuchengxu/vista.vim'
 "Gui stuff
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -46,20 +48,19 @@ Plug 'liuchengxu/vim-clap', { 'do': has('win32') ? 'cargo build --release' : 'ma
 " Colorscheme
 Plug 'adigitoleo/vim-mellow' "light and dark theme pretty plain
 Plug 'khadegd/vim-isaac-theme'
-Plug 'https://gitlab.com/yorickpeterse/vim-paper.git' " Parchement like lack a bit of color
-" Nerdy
-Plug 'nerdypepper/agila.vim'
-Plug 'nerdypepper/vim-colors-plain', { 'branch': 'duotone' }
+" Plug 'https://gitlab.com/yorickpeterse/vim-paper.git' " Parchement like lack a bit of color
+" Plain
 Plug 'axvr/photon.vim'
+Plug 'cideM/yui'
 " Dark
-Plug 'gerardbm/vim-atomic'
-Plug 'tomasiser/vim-code-dark'
+Plug 'nerdypepper/agila.vim'
 Plug 'junegunn/seoul256.vim' 
-Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
+Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+Plug 'chuling/equinusocio-material.vim'
+Plug 'herrbischoff/cobalt2.vim'
 " Dark colorful
 Plug 'joshdick/onedark.vim'
 Plug 'Rigellute/shades-of-purple.vim'
-Plug 'aonemd/kuroi.vim'
 Plug 'ghifarit53/sonokai'
 Plug 'rakr/vim-colors-rakr'
 " Outrun/Cyber
@@ -68,11 +69,7 @@ Plug 'ntk148v/vim-horizon'
 Plug 'ghifarit53/daycula-vim' , {'branch' : 'main'}
 Plug 'embark-theme/vim', { 'as': 'embark' }
 "Light colorful
-Plug 'habamax/vim-polar'
-Plug 'tacahiroy/vim-colors-isotake'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'fabi1cazenave/kalahari.vim' "best light colorscheme so far
-Plug 'meain/hima-vim' "Really cool light theme bundle with dark one
+"Plug 'NLKNguyen/papercolor-theme'
 " Colorscheme template
 Plug 'lifepillar/vim-colortemplate'
 "Live Scratchpad
