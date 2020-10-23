@@ -11,8 +11,9 @@ set dir=/tmp
 "------------------------------------------------------------------------------
 " Colorslut
 "------------------------------------------------------------------------------
+
 let g:material_terminal_italics = 1
-let g:material_theme_style = 'dark'
+let g:material_theme_style = 'darker'
 let g:material_theme_terminal_italics=1
 " let g:tokyonight_style = 'storm' " available: night, storm
 " let g:tokyonight_enable_italic = 1
@@ -30,11 +31,13 @@ augroup colorscheme_change | au!
     au ColorScheme * hi Keyword gui=italic cterm=italic
     au ColorScheme * hi pythonClassKeyword gui=italic cterm=italic
     au ColorScheme * hi pythonClassVar gui=italic
+    au ColorScheme material hi Normal guibg=#212121
 augroup END
 
 set termguicolors
+let g:color_name = "material"
 colorscheme material
-set background=dark
+" set background=dark
 
 let g:airline_theme = 'material'
 "------------------------------------------------------------------------------
@@ -81,9 +84,9 @@ augroup END
 "------------------------------------------------------------------------------
 " Closetag
 "------------------------------------------------------------------------------
-" let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
-" let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.js'
-" let g:closetag_filetypes = 'html,xhtml,phtml,javascript'
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
+let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.js'
+let g:closetag_filetypes = 'html,xhtml,phtml,javascript'
 "------------------------------------------------------------------------------
 " Colorizer
 "------------------------------------------------------------------------------
@@ -279,6 +282,7 @@ set wildignore+=*.swp,.lock,.DS_Store,._*
 
 " Very magic by default
 cnoremap %s/ %sm/
+nnoremap <leader> c:<CR>
 
 " No arrow keys
 nnoremap <up> <nop>
@@ -290,6 +294,7 @@ inoremap <right> <nop>
 
 " Left and right can switch buffers
 nnoremap <C-f> :BL<CR>
+nnoremap <leader>f :BL<CR>
 nnoremap <left> :bp<CR>
 nnoremap <right> :bn<CR>
 " Reload config
@@ -307,6 +312,9 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " Split plane
+nnoremap <leader><leader> :q<CR>
+nnoremap <leader>h :split<CR>
+nnoremap <leader>v :vsplit<CR>
 nnoremap <A-h> :split<CR>
 nnoremap <A-v> :vsplit<CR>
 
@@ -343,4 +351,3 @@ hi CocInfoSign ctermfg=6
 
 hi CocInfoFloat ctermfg=7
 hi CocHintFloat ctermfg=7
-
