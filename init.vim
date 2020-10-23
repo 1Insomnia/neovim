@@ -333,7 +333,7 @@ nnoremap ? :Clap<CR>
 
 
 " Ugh
-:command! spi :source % | :PlugInstall
+:command! SPI :source % | :PlugInstall
 :command! WQ wq
 :command! Wq wq
 :command! Wqa wqa
@@ -342,6 +342,9 @@ nnoremap ? :Clap<CR>
 :command! PI :PlugInstall
 :command! S :source %
 :command! CT :ColorizerToggle
+:command! GA :Git add .
+:command! GC :Git commit
+:command! GP :Git push
 
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 
