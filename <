@@ -33,6 +33,7 @@ augroup colorscheme_change | au!
     au ColorScheme * hi pythonClassVar gui=italic
     au ColorScheme material hi Normal guibg=#212121
 augroup END
+
 set termguicolors
 let g:color_name = "material"
 colorscheme material
@@ -266,8 +267,6 @@ set clipboard=unnamedplus               " Copy paste between vim and everything 
 set colorcolumn=80
 highlight ColorColumn guibg=#3d434f
 set incsearch
-" Disable auto comment
-set formatoptions-=cro
 
 set wildignore+=.git,.hg,.svn
 set wildignore+=*.aux,*.out,*.toc
@@ -284,7 +283,6 @@ set wildignore+=*.swp,.lock,.DS_Store,._*
 " Very magic by default
 cnoremap %s/ %sm/
 nnoremap <leader> c:<CR>
-nnoremap <silent><leader><leader> :x<CR>
 
 " No arrow keys
 nnoremap <up> <nop>
@@ -314,6 +312,7 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " Split plane
+nnoremap <leader><leader> :q<CR>
 nnoremap <leader>h :split<CR>
 nnoremap <leader>v :vsplit<CR>
 nnoremap <A-h> :split<CR>
@@ -331,9 +330,8 @@ nnoremap / /\v
 nnoremap ? :Clap<CR>
 " nnoremap <C-p> :Clap files<CR>
 
-
 " Ugh
-:command! spi :source % | :PlugInstall
+:command! SPI :source % | :PlugInstall
 :command! WQ wq
 :command! Wq wq
 :command! Wqa wqa
