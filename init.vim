@@ -36,7 +36,7 @@ augroup colorscheme_change | au!
     au ColorScheme polar hi Normal guibg=#d9d9d9
 augroup END
 set termguicolors
-colo plainloco
+colo dim
 set background=dark
 
 " let g:airline_theme = 'material'
@@ -60,9 +60,13 @@ autocmd FileType html let g:rainbow_active= 0
 "------------------------------------------------------------------------------
 " Better whitespaces
 "------------------------------------------------------------------------------
+" set list
+" set fillchars=vert:\│
+" set listchars=tab:-▸,eol:↲,extends:»,precedes:«,space:•
 set list
-set fillchars=vert:\│
-set listchars=tab:-▸,eol:↲,extends:»,precedes:«,space:•
+set listchars=
+set listchars+=tab:›\ ,
+set listchars+=trail:•,
 " set listchars=tab:┊\ ,nbsp:␣,space:•,extends:>,precedes:<,trail:•
 "------------------------------------------------------------------------------
 " Markdown

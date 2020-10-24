@@ -48,6 +48,7 @@ Plug 'khadegd/vim-isaac-theme'
 " Plain
 Plug 'axvr/photon.vim'
 Plug 'cideM/yui'
+Plug 'jeffkreeftmeijer/vim-dim'
 " Dark
 Plug 'nerdypepper/agila.vim'
 Plug 'junegunn/seoul256.vim' 
