@@ -1,3 +1,4 @@
+set nocompatible
 let mapleader = "\<Space>"
 set shell=/bin/zsh
 source $HOME/.config/nvim/coc.vim 
@@ -7,7 +8,7 @@ source $HOME/.config/nvim/plugs.vim
 set nobackup
 set nowritebackup
 set noswapfile
-set dir=/tmp
+" set dir=/tmp
 "------------------------------------------------------------------------------
 " Colorslut
 "------------------------------------------------------------------------------
@@ -22,7 +23,7 @@ let g:material_theme_terminal_italics=1
 " let g:sonokai_style = 'espresso'
 " let g:sonokai_enable_italic = 1
 " let g:material_terminal_italics = 1
-let python_highlight_all=1
+" let python_highlight_all=1
 set fillchars+=vert:│
 augroup colorscheme_change | au!
     au ColorScheme * hi Comment gui=italic cterm=italic
@@ -31,14 +32,14 @@ augroup colorscheme_change | au!
     au ColorScheme * hi Keyword gui=italic cterm=italic
     au ColorScheme * hi pythonClassKeyword gui=italic cterm=italic
     au ColorScheme * hi pythonClassVar gui=italic
-    au ColorScheme material hi Normal guibg=#212121
+    au ColorScheme isaac hi Normal guibg=#d9d9d9
+    au ColorScheme polar hi Normal guibg=#d9d9d9
 augroup END
 set termguicolors
-let g:color_name = "material"
-colorscheme material
-" set background=dark
+colo plainloco
+set background=dark
 
-let g:airline_theme = 'material'
+" let g:airline_theme = 'material'
 "------------------------------------------------------------------------------
 " Float Term
 "------------------------------------------------------------------------------
@@ -55,13 +56,14 @@ let g:floaterm_keymap_toggle = '<F12>'
 " Bracket pair colorizer
 "------------------------------------------------------------------------------
 let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
+autocmd FileType html let g:rainbow_active= 0
 "------------------------------------------------------------------------------
 " Better whitespaces
 "------------------------------------------------------------------------------
 set list
 set fillchars=vert:\│
-" set listchars=tab:-▸,eol:↲,extends:»,precedes:«,space:•
-set listchars=tab:┊\ ,nbsp:␣,space:•,extends:>,precedes:<,trail:•
+set listchars=tab:-▸,eol:↲,extends:»,precedes:«,space:•
+" set listchars=tab:┊\ ,nbsp:␣,space:•,extends:>,precedes:<,trail:•
 "------------------------------------------------------------------------------
 " Markdown
 "------------------------------------------------------------------------------
@@ -94,7 +96,7 @@ lua require'colorizer'.setup()
 "NERDTree
 "------------------------------------------------------------------------------
 set autochdir
-let NERDTreeChDirMode=2
+let NERDTreeChDirMode=1
 nnoremap <leader>n :NERDTree .<CR>
 nmap <C-n> :NERDTreeToggle<CR>
 "------------------------------------------------------------------------------
@@ -109,11 +111,11 @@ augroup plaintext
     autocmd FileType text setlocal ts=2 sts=2 sw=2 expandtab textwidth=80 colorscheme
 augroup END
 
-" augroup webdev
-    " autocmd!
-    " autocmd FileType less,css,html,js?,ts? setlocal ts=2 sts=2 sw=2 expandtab
-    " autocmd FileType less,css,html nnoremap <Leader>s viB:sort<cr>
-" augroup END
+augroup webdev
+    autocmd!
+    autocmd FileType less,css,html,js?,ts? setlocal ts=2 sts=2 sw=2 expandtab
+    autocmd FileType less,css,html nnoremap <Leader>s viB:sort<cr>
+augroup END
 
 augroup restorecursor
     autocmd BufReadPost *
@@ -169,7 +171,7 @@ let g:fzf_buffers_jump = 0
 
 map <leader>p :Files<CR>
 nnoremap <C-g> :GFiles<CR>
-nnoremap <C-p> :Files<CR>
+" nnoremap <C-p> :Files<CR>
 nnoremap <C-b> :Buffers<CR>
 
 map <leader>b :Buffers<CR>
@@ -268,6 +270,7 @@ highlight ColorColumn guibg=#3d434f
 set incsearch
 " Disable auto comment
 set formatoptions-=cro
+set iskeyword+=-                      	" treat dash separated words as a word text object"
 
 set wildignore+=.git,.hg,.svn
 set wildignore+=*.aux,*.out,*.toc
@@ -326,10 +329,10 @@ set nofoldenable
 set foldlevel=2
 
 " Let's do something crazy
-" nnoremap / :Clap blines<CR>
-nnoremap / /\v
+nnoremap / :Clap blines<CR>
+" nnoremap / /\v
 nnoremap ? :Clap<CR>
-" nnoremap <C-p> :Clap files<CR>
+nnoremap <C-p> :Clap files<CR>
 
 
 " Ugh
@@ -356,3 +359,5 @@ hi CocInfoSign ctermfg=6
 
 hi CocInfoFloat ctermfg=7
 hi CocHintFloat ctermfg=7
+
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o

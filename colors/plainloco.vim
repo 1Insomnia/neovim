@@ -174,7 +174,7 @@ hi! link Macro            PreProc
 hi! link PreCondit        PreProc
 
 call s:h("Type",          {"fg": s:type})
-call s:h("Class",          {"fg": s:class})
+call s:h("Class",          {"fg": s:keyword})
 hi! link Type             Normal
 " hi! link StorageClass     Class
 hi! link Structure        Class
@@ -328,8 +328,6 @@ hi link rustLifetime jsSpreadOperator
 hi link shCommandSub jsSpreadOperator
 
 hi link cFormat jsSpreadOperator
-
-hi link StorageClass Storage
 
 call s:h("xmlTag", {"bg": s:bg, "fg": s:constant})
 hi link xmlTagName xmlTag
