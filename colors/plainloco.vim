@@ -36,7 +36,9 @@ let s:dark_yellow     = { "gui": "#c5a332", "cterm": "3" }
 let s:statement       = { "gui": "#0098dd", "cterm": "3" }
 " Dark theme
 " Edition
-let s:dark_bg         = { "gui": "#282c34", "cterm": "0" }
+" Edition
+let s:dark_bg         = { "gui": "#18191E", "cterm": "0" }
+" let s:dark_bg         = { "gui": "#282c34", "cterm": "0" }
 let s:dark_fg         = { "gui": "#abb2bf", "cterm": "9" }
 let s:dark_line_nr    = { "gui": "#ffcc00", "cterm": "3" }
 let s:dark_comment    = { "gui": "#636d83", "cterm": "9" }

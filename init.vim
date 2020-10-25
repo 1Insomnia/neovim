@@ -42,7 +42,7 @@ augroup colorscheme_change | au!
     endif
 augroup END
 set termguicolors
-colo tokyonight
+colo plainloco
 set background=dark
 
 " let g:airline_theme = 'material'
@@ -339,9 +339,9 @@ set nofoldenable
 set foldlevel=2
 
 " Let's do something crazy
-nnoremap / :Clap blines<CR>
-" nnoremap / /\v
-nnoremap ? :Clap<CR>
+nnoremap ? :Clap blines<CR>
+nnoremap / /\v
+" nnoremap ? :Clap<CR>
 nnoremap <C-p> :Clap files<CR>
 
 
