@@ -8,7 +8,7 @@ source $HOME/.config/nvim/plugs.vim
 set nobackup
 set nowritebackup
 set noswapfile
-" set dir=/tmp
+set dir=/tmp
 "------------------------------------------------------------------------------
 " Colorslut
 "------------------------------------------------------------------------------
@@ -32,11 +32,17 @@ augroup colorscheme_change | au!
     au ColorScheme * hi Keyword gui=italic cterm=italic
     au ColorScheme * hi pythonClassKeyword gui=italic cterm=italic
     au ColorScheme * hi pythonClassVar gui=italic
-    au ColorScheme isaac hi Normal guibg=#d9d9d9
-    au ColorScheme polar hi Normal guibg=#d9d9d9
+    if &background != "dark"
+        au ColorScheme toast hi Normal guibg=#d9d9d9
+        au ColorScheme isaac hi Normal guibg=#d9d9d9
+        au ColorScheme polar hi Normal guibg=#d9d9d9
+    else
+        au ColorScheme toast hi Normal guibg=#18191E
+        au ColorScheme tokyonight hi Normal guibg=#18191E
+    endif
 augroup END
 set termguicolors
-colo dim
+colo tokyonight
 set background=dark
 
 " let g:airline_theme = 'material'

@@ -45,6 +45,7 @@ Plug 'liuchengxu/vim-clap', { 'do': has('win32') ? 'cargo build --release' : 'ma
 " Colorscheme
 Plug 'adigitoleo/vim-mellow' "light and dark theme pretty plain
 Plug 'khadegd/vim-isaac-theme'
+Plug 'jsit/toast.vim'
 " Plain
 Plug 'axvr/photon.vim'
 Plug 'cideM/yui'

@@ -2074,7 +2074,7 @@ fun! s:apply_syntax_highlightings()
   " F# highlighting
   exec 'hi fsharpTypeName' . s:fg_pink
   exec 'hi fsharpCoreClass' . s:fg_pink
-  exec 'hi fsharpType' . s:fg_pink
+ exec 'hi fsharpType' . s:fg_pink
   exec 'hi fsharpKeyword' . s:fg_blue . s:ft_bold
   exec 'hi fsharpOperator' . s:fg_aqua . s:ft_bold
   exec 'hi fsharpBoolean' . s:fg_green . s:ft_bold
