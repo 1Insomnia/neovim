@@ -1,8 +1,13 @@
-set nocompatible
+" Set leader key to <space>
 let mapleader = "\<Space>"
 set shell=/bin/zsh
-source $HOME/.config/nvim/coc.vim 
-source $HOME/.config/nvim/plugs.vim
+
+" Imports
+let $conf_path = "$HOME/.config/nvim"
+
+source $conf_path/coc.vim 
+source $conf_path/plugs.vim
+source $conf_path/maps.vim
 
 " general settings
 set nobackup
@@ -12,7 +17,6 @@ set dir=/tmp
 "------------------------------------------------------------------------------
 " Colorslut
 "------------------------------------------------------------------------------
-
 let g:material_terminal_italics = 1
 let g:material_theme_style = 'darker'
 let g:material_theme_terminal_italics=1
@@ -39,10 +43,11 @@ augroup colorscheme_change | au!
     else
         au ColorScheme toast hi Normal guibg=#18191E
         au ColorScheme tokyonight hi Normal guibg=#18191E
+        " au ColorScheme material hi Normal guibg=#18191E
     endif
 augroup END
 set termguicolors
-colo plainloco
+colo material
 set background=dark
 
 " let g:airline_theme = 'material'
@@ -131,8 +136,8 @@ augroup restorecursor
     autocmd BufReadPost *
                 \ if line("'\"") > 1 && line("'\"") <= line("$") |
                 \   execute "normal! g`\"" |
-                \ endif
 augroup END
+                \ endif
 "------------------------------------------------------------------------------
 "Indent line
 "------------------------------------------------------------------------------
@@ -143,10 +148,6 @@ let g:indentLine_setColors = 1
 " Git Gutter
 "------------------------------------------------------------------------------
 let g:gitgutter_enabled = 1
-
-highlight GitGutterAdd    guifg=#37bd58 ctermfg=2
-highlight GitGutterChange guifg=#199ffd ctermfg=3
-highlight GitGutterDelete guifg=#fc4a6d ctermfg=1
 
 let g:gitgutter_override_sign_column_highlight = 0
 let g:gitgutter_sign_added                     = '+'
@@ -168,19 +169,22 @@ let g:NERDTreeDirArrowCollapsible = '-'
 "------------------------------------------------------------------------------
 let g:fzf_command_prefix = 'Fzf'
 nnoremap <Leader>b :FzfBuffers<CR>
+nnoremap <Leader>f :FzfLines<CR>
 nnoremap <Leader>h :FzfHistory<CR>
 nnoremap <Leader>t :FzfBTags<CR>
 nnoremap <silent> <Leader>x :FzfCommits<CR>
 nnoremap <Leader>T :FzfTags<CR>
 " Have FZF list all tracked files plus untracked files minus ignored files
 nnoremap <Leader>p :FzfGitFiles --exclude-standard --others --cached<CR>
+" nnoremap <C-p> :FzfGitFiles --exclude-standard --others --cached<CR>
 nnoremap <Leader>gt :FzfRg<CR>
 
 " floating fzf window with borders
 let g:fzf_layout = { 'window': 'call CreateCenteredFloatingWindow()' }
+let $FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git/**' -g '!{node_modules,.git}'"
 
 function! FZFWithDevIcons()
-  let l:fzf_files_options = ' -m --bind ctrl-d:preview-page-down,ctrl-u:preview-page-up --preview "bat --color always --style numbers {2..}"'
+    let l:fzf_files_options = ' -m --bind ctrl-d:preview-page-down,ctrl-u:preview-page-up --preview "bat --color always --style numbers {2..}" '
 
   function! s:files()
     let l:files = split(system($FZF_DEFAULT_COMMAND.'| devicon-lookup'), '\n')
@@ -210,7 +214,7 @@ function! FZFWithDevIcons()
 endfunction
 
 " Open fzf Files
-nnoremap <silent> <C-p> :call FZFWithDevIcons()<CR>
+nnoremap <silent> <C-p> :call FZFWithDevIcons() --exclude-standard --others --cached<CR>
 function! CreateCenteredFloatingWindow()
     let width = min([&columns - 4, max([80, &columns - 20])])
     let height = min([&lines - 4, max([20, &lines - 10])])
@@ -285,70 +289,14 @@ set wildignore+=*.doc,*.pdf,*.cbr,*.cbz
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz,*.kgb
 set wildignore+=*.swp,.lock,.DS_Store,._*
 
-
-" Very magic by default
-cnoremap %s/ %sm/
-nnoremap <leader> c:<CR>
-nnoremap <silent><leader><leader> :x<CR>
-
-" No arrow keys
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
-
-" Left and right can switch buffers
-nnoremap <C-f> :BL<CR>
-nnoremap <leader>f :BL<CR>
-nnoremap <left> :bp<CR>
-nnoremap <right> :bn<CR>
-" Reload config
-nnoremap <C-s> :source %<cr>
-nnoremap <A-k> :bd<cr>
-
 " Better splits
 set splitbelow
 set splitright
 
-" Easy pane switching
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
-" Split plane
-nnoremap <leader>h :split<CR>
-nnoremap <leader>v :vsplit<CR>
-nnoremap <A-h> :split<CR>
-nnoremap <A-v> :vsplit<CR>
-
 " Code folding
 set foldmethod=indent
 set foldnestmax=10
-set nofoldenable
 set foldlevel=2
-
-" Let's do something crazy
-nnoremap / /\v
-
-
-" Ugh
-:command! SPI :source % | :PlugInstall
-:command! WQ wq
-:command! Wq wq
-:command! Wqa wqa
-:command! W w
-:command! Q q
-:command! PI :PlugInstall
-:command! S :source %
-:command! CT :ColorizerToggle
-:command! GA :Git add .
-:command! GC :Git commit
-:command! GP :Git push
-
-nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 
 " coc-nvim
 hi CocHintSign ctermfg=6
