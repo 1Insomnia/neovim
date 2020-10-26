@@ -20,6 +20,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'RRethy/vim-illuminate'
 Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
 Plug 'plasticboy/vim-markdown'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'iamcco/markdown-preview.nvim'
@@ -37,11 +38,6 @@ Plug 'tpope/vim-fugitive'
 " Misc
 Plug 'tpope/vim-commentary'
 Plug 'norcalli/nvim-colorizer.lua'
-Plug 'liuchengxu/vim-clap'
-Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
-Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
-Plug 'liuchengxu/vim-clap', { 'do': { -> clap#installer#force_download() } }
-Plug 'liuchengxu/vim-clap', { 'do': has('win32') ? 'cargo build --release' : 'make' }
 " Colorscheme
 Plug 'adigitoleo/vim-mellow' "light and dark theme pretty plain
 Plug 'khadegd/vim-isaac-theme'

@@ -37,18 +37,22 @@ let s:statement       = { "gui": "#0098dd", "cterm": "3" }
 " Dark theme
 " Edition
 " Edition
-let s:dark_bg         = { "gui": "#18191E", "cterm": "0" }
-" let s:dark_bg         = { "gui": "#282c34", "cterm": "0" }
+" let s:dark_bg         = { "gui": "#18191E", "cterm": "0" }
+let s:dark_bg         = { "gui": "#282c34", "cterm": "0" }
 let s:dark_fg         = { "gui": "#abb2bf", "cterm": "9" }
 let s:dark_line_nr    = { "gui": "#ffcc00", "cterm": "3" }
 let s:dark_comment    = { "gui": "#636d83", "cterm": "9" }
 let s:dark_selection  = { "gui": "#2b72c9", "cterm": "3" }
 let s:dark_operator   = { "gui": "#7a82da", "cterm": "3" }
 let s:dark_type       = { "gui": "#ff6480", "cterm": "3" }
-let s:dark_ma         = { "gui": "#f9c859", "cterm": "3" }
+let s:dark_string     = { "gui": "#f9c859", "cterm": "3" }
 let s:dark_class      = { "gui": "#ff6480", "cterm": "3" }
+let s:dark_property  = { "gui": "#ce9887", "cterm": "3" }
 let s:dark_func       = { "gui": "#3fc56b", "cterm": "3" }
 let s:dark_keyword    = { "gui": "#10b1fe", "cterm": "3" }
+let s:dark_number     = { "gui": "#ff78f8", "cterm": "3" }
+let s:dark_mt         = { "gui": "#3691ff", "cterm": "9"}
+let s:dark_ma         = { "gui": "#ff936a", "cterm": "9"}
 " Errors & warning
 let s:dark_error      = { "gui": "#ff2e3f", "cterm": "1" }
 let s:dark_warning    = { "gui": "#da7a43", "cterm": "1" }
@@ -93,11 +97,15 @@ if &background == "dark"
   let s:lineNr          = s:dark_line_nr
   let s:operator        = s:dark_operator
   let s:type            = s:dark_type
-  let s:MA              = s:dark_ma
   let s:class           = s:dark_class
   let s:func            = s:dark_func
   let s:keyword         = s:dark_keyword
-  "Diff
+  let s:string          = s:dark_string
+  let s:mt              = s:dark_mt
+  let s:ma              = s:dark_ma
+  let s:number          = s:dark_number
+  let s:property        = s:dark_property
+  "Diff                     
   let s:diff_add        = s:dark_diff_add
   let s:diff_change     = s:dark_diff_change
   " Gutter
@@ -147,14 +155,18 @@ call s:h("Normal",        {"bg": s:bg, "fg": s:fg,})
 call s:h("Noise",         {"bg": s:bg, "fg": s:norm_subtle})
 call s:h("Cursor",        {"bg": s:bg, "fg": s:red})
 call s:h("Comment",       {"fg": s:comment, "cterm": "italic", "gui": "italic"})
-call s:h("Function",      {"fg": s:fg, "cterm": "bold", "gui": "bold"})
+call s:h("Function",      {"fg": s:func})
 
-call s:h("Constant",      {"bg": s:bg, "fg": s:yellow}) 
-hi! link Character        Constant
-hi! link Number           Constant
-hi! link Boolean          Constant
-hi! link Float            Constant
-hi! link String           Constant
+call s:h("String",        {"bg": s:bg, "fg": s:string}) 
+call s:h("Number",        {"bg": s:bg, "fg": s:number}) 
+call s:h("Constant",      {"bg": s:bg, "fg": s:constant}) 
+hi! link Character        String
+hi! link Number           Number
+hi! link Boolean          Keyword
+hi! link Float            Number
+hi! link String           String
+hi! link Constant         Constant
+
 
 " call s:h("Identifier",    {"fg": s:red})
 hi! link Identifier       Normal
@@ -176,11 +188,11 @@ hi! link Macro            PreProc
 hi! link PreCondit        PreProc
 
 call s:h("Type",          {"fg": s:type})
-call s:h("Class",          {"fg": s:keyword})
+call s:h("Class",          {"fg": s:class})
 hi! link Type             Normal
-" hi! link StorageClass     Class
+hi! link StorageClass     Class
 hi! link Structure        Class
-" hi! link Typedef          Type
+hi! link Typedef          Type
 
 "call s:h("Special",       {"fg": s:pink})
 hi! link Special          StatusLine
@@ -262,26 +274,28 @@ call s:h("ColorColumn",   {"bg": s:bg_subtle})
 call s:h("MatchParen",    {"bg": s:bg_very_subtle, "fg": s:norm})
 call s:h("qfLineNr",      {"fg": s:medium_gray})
 
-call s:h("htmlH1",        {"bg": s:bg, "fg": s:norm})
-call s:h("htmlH2",        {"bg": s:bg, "fg": s:norm})
-call s:h("htmlH3",        {"bg": s:bg, "fg": s:norm})
-call s:h("htmlH4",        {"bg": s:bg, "fg": s:norm})
-call s:h("htmlH5",        {"bg": s:bg, "fg": s:norm})
-call s:h("htmlH6",        {"bg": s:bg, "fg": s:norm})
+call s:h("htmlH1",        {"bg": s:bg, "fg": s:mt})
+call s:h("htmlH2",        {"bg": s:bg, "fg": s:mt})
+call s:h("htmlH3",        {"bg": s:bg, "fg": s:mt})
+call s:h("htmlH4",        {"bg": s:bg, "fg": s:mt})
+call s:h("htmlH5",        {"bg": s:bg, "fg": s:mt})
+call s:h("htmlH6",        {"bg": s:bg, "fg": s:mt})
 
-call s:h("htmlBold",      {"bg": s:bg, "fg": s:norm, "gui": "bold"})
-call s:h("htmlItalic",    {"bg": s:bg, "fg": s:norm})
-call s:h("htmlEndTag",    {"bg": s:bg, "fg": s:norm})
-call s:h("htmlTag",       {"bg": s:bg, "fg": s:norm})
-call s:h("htmlTagName",   {"bg": s:bg, "fg": s:norm})
-call s:h("htmlArg",       {"bg": s:bg, "fg": s:norm})
-call s:h("htmlError",     {"bg": s:bg, "fg": s:red})
+call s:h("htmlArg", { "fg": s:ma })
+
+call s:h("htmlLink", { "fg": s:ma}) 
+
+call s:h("htmlTag", { "fg": s:mt })
+call s:h("htmlTagN", { "fg": s:mt })
+call s:h("htmlEndTag", { "fg": s:mt })
+call s:h("htmlTagName", { "fg": s:mt })
+call s:h("htmlTitle", { "fg": s:fg })
 
 " JavaScript highlighting
 "
 call s:h("javaScript",           {"bg": s:bg, "fg": s:norm})
 call s:h("javaScriptBraces",     {"bg": s:bg, "fg": s:norm})
-call s:h("javaScriptNumber",     {"bg": s:bg, "fg": s:green})
+call s:h("javaScriptNumber",     {"bg": s:bg, "fg": s:number})
 
 hi link diffRemoved       DiffDelete
 hi link diffAdded         DiffAdd
@@ -300,24 +314,63 @@ hi link GitGutterDelete             GutterDelete
 hi link GitGutterChange             GutterChange
 hi link GitGutterChangeDelete       GutterChangeDelete
 
-hi link jsFlowTypeKeyword Statement
-hi link jsFlowImportType Statement
-hi link jsFunction Function
-hi link jsClass Class
-hi link jsGlobalObjects Noise
-hi link jsGlobalNodeObjects Normal
-hi link jsSwitchCase Constant
-call s:h("jsThis", { "fg": s:fg, "gui": "italic"})
-call s:h("jsFunction", { "fg": s:keyword })
-call s:h("jsFuncCall", { "fg": s:func })
+" Javascript
+call s:h("javaScriptBraces", { "fg": s:operator })
+call s:h("javaScriptFunction", { "fg": s:keyword })
+call s:h("javaScriptIdentifier", { "fg": s:red })
+call s:h("javaScriptNull", { "fg": s:keyword })
+call s:h("javaScriptNumber", { "fg": s:number })
+call s:h("javaScriptRequire", { "fg": s:func })
+" call s:h("javaScriptReserved", { "fg": s:purple })
+" " https://github.com/pangloss/vim-javascript
+call s:h("jsArrowFunction", { "fg": s:keyword })
 call s:h("jsClassKeyword", { "fg": s:keyword })
-call s:h("jsClassMethodType", { "fg": s:class })
-call s:h("javaScriptIdentifier", { "fg": s:keyword })
+call s:h("jsClassMethodType", { "fg": s:black })
+" call s:h("jsDocParam", { "fg": s:blue })
+" call s:h("jsDocTags", { "fg": s:purple })
+" call s:h("jsExport", { "fg": s:purple })
+" call s:h("jsExportDefault", { "fg": s:purple })
+" call s:h("jsExtendsKeyword", { "fg": s:purple })
+call s:h("jsKeyword", { "fg": s:keyword })
+call s:h("jsFrom", { "fg": s:keyword })
+call s:h("jsFuncCall", { "fg": s:func })
+call s:h("jsFunction", { "fg": s:keyword })
+" call s:h("jsGenerator", { "fg": s:yellow })
+call s:h("jsGlobalObjects", { "fg": s:property })
+call s:h("jsImport", { "fg": s:keyword })
+call s:h("jsModuleAs", { "fg": s:keyword })
+" call s:h("jsModuleWords", { "fg": s:purple })
+" call s:h("jsModules", { "fg": s:purple })
+call s:h("jsNull", { "fg": s:keyword, "cterm": "italic", "gui": "italic"})
+call s:h("jsOperator", { "fg": s:operator })
 call s:h("jsStorageClass", { "fg": s:keyword })
+" call s:h("jsSuper", { "fg": s:red })
+" call s:h("jsTemplateBraces", { "fg": s:dark_red })
+" call s:h("jsTemplateVar", { "fg": s:green })
+call s:h("jsThis", { "fg": s:red, "cterm": "italic", "gui": "italic"})
+call s:h("jsUndefined", { "fg": s:keyword })
+" " https://github.com/othree/yajs.vim
+call s:h("javascriptArrowFunc", { "fg": s:keyword })
+call s:h("javascriptClassExtends", { "fg": s:class })
+call s:h("javascriptClassKeyword", { "fg": s:class })
+" call s:h("javascriptDocNotation", { "fg": s:purple })
+call s:h("javascriptDocParamName", { "fg": s:func })
+" call s:h("javascriptDocTags", { "fg": s:purple })
+" call s:h("javascriptEndColons", { "fg": s:white })
+call s:h("javascriptExport", { "fg": s:keyword })
+call s:h("javascriptFuncArg", { "fg": s:fg })
+call s:h("javascriptFuncKeyword", { "fg": s:func })
+" call s:h("javascriptIdentifier", { "fg": s:red })
+call s:h("javascriptImport", { "fg": s:keyword })
+call s:h("javascriptMethodName", { "fg": s:red })
+call s:h("javascriptObjectLabel", { "fg": s:property })
+" call s:h("javascriptOpSymbol", { "fg": s:cyan })
+" call s:h("javascriptOpSymbols", { "fg": s:cyan })
+call s:h("javascriptPropertyName", { "fg": s:property })
+" call s:h("javascriptTemplateSB", { "fg": s:dark_red })
+call s:h("javascriptVariable", { "fg": s:red })
+call s:h("javascriptConstant", { "fg": s:constant })
 
-call s:h("jsSpreadOperator ",     {"bg": s:bg, "fg": s:selection})
-hi link jsReturn jsSpreadOperator
-hi link jsExport jsSpreadOperator
 
 call s:h("rustModPath ",     {"bg": s:bg, "fg": s:lightest_gray})
 hi link rustMacro jsSpreadOperator
@@ -336,7 +389,7 @@ hi link xmlTagName xmlTag
 hi link xmlEndTag xmlTag
 hi link xmlAttrib xmlTag
 
-call s:h("Markdown", {"bg": s:bg, "fg": s:MA})
+call s:h("Markdown", {"bg": s:bg, "fg": s:yellow})
 hi link markdownH1 Markdown 
 hi link markdownH2 Markdown 
 hi link markdownH3 Markdown 
