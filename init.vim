@@ -163,6 +163,13 @@ let g:indentLine_color_gui = '#565e6e'
 let g:indentLine_setColors = 1
 " }}}
 
+" Git Settings {{{
+" Twiggy {{{
+let g:twiggy_group_locals_by_slash = 0
+let g:twiggy_local_branch_sort = 'mru'
+let g:twiggy_remote_branch_sort = 'date'
+"}}}
+
 " Git Gutter {{{
 let g:gitgutter_enabled = 1
 let g:gitgutter_override_sign_column_highlight = 0
@@ -173,6 +180,8 @@ let g:gitgutter_sign_removed                   = '-'
 let g:gitgutter_sign_removed_first_line        = '×'
 let g:gitgutter_sign_modified_removed          = '×'
 "}}}
+" Git Settings }}}
+
 " FZF {{{
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
