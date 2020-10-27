@@ -22,16 +22,21 @@ nnoremap <C-k> :bd<cr>
 nnoremap <C-s> :source %<cr>
 
 " Easy pane switching
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+nnoremap <leader>h :wincmd h<CR>
+nnoremap <leader>j :wincmd j<CR>
+nnoremap <leader>k :wincmd k<CR>
+nnoremap <leader>l :wincmd l<CR>
 
 " Split plane
-nnoremap <leader>h :split<CR>
+" nnoremap <leader>h :split<CR>
 nnoremap <leader>v :vsplit<CR>
 nnoremap <A-h> :split<CR>
 nnoremap <A-v> :vsplit<CR>
+
+" Resize pane
+nnoremap <Leader>+ :vertical resize +10<CR>
+nnoremap <Leader>- :vertical resize -10<CR>
+nnoremap <Leader>rp :resize 100<CR>
 
 " Paragraph scrolling
 nnoremap <A-a> {

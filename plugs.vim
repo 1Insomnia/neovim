@@ -6,6 +6,7 @@
 "  autocmd VimEnter * PlugInstall | source $MYVIMRC
 "endif
 
+" vim plug {{{
 call plug#begin('~/.config/nvim/autoload/plugged')
 " Completion and Synthax
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -32,9 +33,11 @@ Plug 'voldikss/vim-floaterm'
 " FZF
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-"Git
+" Git {{{
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+"}}}
 " Misc
 Plug 'tpope/vim-commentary'
 Plug 'norcalli/nvim-colorizer.lua'
@@ -64,9 +67,22 @@ Plug 'embark-theme/vim', { 'as': 'embark' }
 " Light
 Plug 'habamax/vim-polar'
 Plug 'lifepillar/vim-wwdc17-theme'
+" Dusty chalkboard
+Plug 'sainnhe/gruvbox-material'
+Plug 'sainnhe/forest-night'
+Plug 'sainnhe/edge'
 "Live Scratchpad
 Plug 'metakirby5/codi.vim'
+Plug 'roman/golden-ratio'
+" Better scrolling
+Plug 'yuttie/comfortable-motion.vim'
+" Redifine some words
+Plug 'chaoren/vim-wordmotion'
+" SO GOOD
+Plug 'pechorin/any-jump.vim'
+"}}}
 call plug#end()
+
 
 " Automatically install missing plugins on startup
 autocmd VimEnter *

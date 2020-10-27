@@ -9,17 +9,26 @@ source $conf_path/coc.vim
 source $conf_path/plugs.vim
 source $conf_path/maps.vim
 
-" general settings
+" general settings {{{
 set nobackup
 set nowritebackup
 set noswapfile
 set dir=/tmp
-"------------------------------------------------------------------------------
-" Colorslut
-"------------------------------------------------------------------------------
-let g:material_terminal_italics = 1
-let g:material_theme_style = 'darker'
-let g:material_theme_terminal_italics=1
+" }}}
+
+" Colorscheme madness {{{
+" let g:material_terminal_italics = 1
+" let g:material_theme_style = 'darker'
+" let g:material_theme_terminal_italics=1
+
+" Not so much a dusty chalkboard
+let g:gruvbox_material_background = 'medium'
+let g:gruvbox_material_palette = 'material'
+let g:gruvbox_material_visual = 'green background'
+let g:gruvbox_material_cursor = 'auto'
+let g:gruvbox_material_disable_italic_comment = 1
+let g:gruvbox_invert_selection= 0
+
 " let g:tokyonight_style = 'storm' " available: night, storm
 " let g:tokyonight_enable_italic = 1
 " let g:daycula_enable_italic = 1
@@ -33,7 +42,7 @@ augroup colorscheme_change | au!
     au ColorScheme * hi Comment gui=italic cterm=italic
     au ColorScheme * hi JsThis gui=italic cterm=italic
     au ColorScheme * hi JsClassKeyword gui=italic cterm=italic
-    au ColorScheme * hi Keyword gui=italic cterm=italic
+    " au ColorScheme * hi Keyword gui=italic cterm=italic
     au ColorScheme * hi pythonClassKeyword gui=italic cterm=italic
     au ColorScheme * hi pythonClassVar gui=italic
     if &background != "dark"
@@ -46,31 +55,30 @@ augroup colorscheme_change | au!
         " au ColorScheme material hi Normal guibg=#18191E
     endif
 augroup END
-set termguicolors
-colo material
-set background=dark
 
-" let g:airline_theme = 'material'
-"------------------------------------------------------------------------------
-" Float Term
-"------------------------------------------------------------------------------
-let g:clap_theme = { 'search_text': {'guifg': 'green', 'ctermfg': 'red'} }
-autocmd FileType clap_input inoremap <silent> <buffer> <Esc> <Esc>:call clap#handler#exit()<CR>
-"------------------------------------------------------------------------------
-" Float Term
-"------------------------------------------------------------------------------
+set termguicolors
+colo gruvbox-material
+set background=dark
+let g:airline_theme = 'grubox-material'
+"}}}
+
+" vim-devicons {{{
+let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+let g:DevIconsEnableFoldersOpenClose = 1
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {}
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols[''] = "\uf15b"
+let g:WebDevIconsUnicodeDecorateFolderNodes = v:true
+"}}}
+
+" Float Term {{{
 let g:floaterm_keymap_new    = '<F7>'
 let g:floaterm_keymap_prev   = '<F8>'
 let g:floaterm_keymap_next   = '<F9>'
 let g:floaterm_keymap_toggle = '<F12>'
-"------------------------------------------------------------------------------
-" Bracket pair colorizer
-"------------------------------------------------------------------------------
-let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
-autocmd FileType html let g:rainbow_active= 0
-"------------------------------------------------------------------------------
-" Better whitespaces
-"------------------------------------------------------------------------------
+"}}}
+
+" Better whitespaces {{{
 " set list
 " set fillchars=vert:\│
 " set listchars=tab:-▸,eol:↲,extends:»,precedes:«,space:•
@@ -79,10 +87,9 @@ set listchars=
 set listchars+=tab:›\ ,
 set listchars+=trail:•,
 " set listchars=tab:┊\ ,nbsp:␣,space:•,extends:>,precedes:<,trail:•
-"------------------------------------------------------------------------------
-" Markdown
-"------------------------------------------------------------------------------
-" disable header folding
+"}}}
+
+" Markdown {{{
 let g:vim_markdown_folding_disabled = 1
 " do not use conceal feature, the implementation is not so good
 let g:vim_markdown_conceal = 0
@@ -97,30 +104,39 @@ let g:vim_markdown_json_frontmatter = 1  " for JSON format
 augroup pandoc_syntax
     au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
 augroup END
-"------------------------------------------------------------------------------
-" Closetag
-"------------------------------------------------------------------------------
+"}}}
+
+" Closetag {{{
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
 let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.js'
 let g:closetag_filetypes = 'html,xhtml,phtml,javascript'
-"------------------------------------------------------------------------------
-" Colorizer
+"}}}
+
+" Colorizer {{{
 "------------------------------------------------------------------------------
 lua require'colorizer'.setup()
-"------------------------------------------------------------------------------
-"NERDTree
-"------------------------------------------------------------------------------
-set autochdir
+"}}}
+
+" NERDTree {{{
+" set autochdir
 let NERDTreeChDirMode=1
 nnoremap <leader>n :NERDTree .<CR>
 nmap <C-n> :NERDTreeToggle<CR>
-"------------------------------------------------------------------------------
-"Illuminate
+
+let g:NERDTreeMinimalUI           = 1
+let g:NERDTreeWinPos              = 'left'
+let g:NERDTreeWinSize             = 20
+let g:NERDTreeStatusline          = "  "
+let g:NERDTreeDirArrowExpandable  = '+'
+let g:NERDTreeDirArrowCollapsible = '-'
+"}}}
+
+" Illuminate {{{
 "------------------------------------------------------------------------------
 let g:Illuminate_ftblacklist = ['javascript', 'jsx', 'html']
-"------------------------------------------------------------------------------
-"Indenting
-"------------------------------------------------------------------------------
+" }}}
+
+" Indenting {{{
 augroup plaintext
     autocmd!
     autocmd FileType text setlocal ts=2 sts=2 sw=2 expandtab textwidth=80 colorscheme
@@ -138,146 +154,153 @@ augroup restorecursor
                 \   execute "normal! g`\"" |
 augroup END
                 \ endif
-"------------------------------------------------------------------------------
-"Indent line
+" }}}
+
+" Indent line {{{
 "------------------------------------------------------------------------------
 let g:indentLine_char = '▏'
 let g:indentLine_color_gui = '#565e6e'
 let g:indentLine_setColors = 1
-"------------------------------------------------------------------------------
-" Git Gutter
-"------------------------------------------------------------------------------
-let g:gitgutter_enabled = 1
+" }}}
 
+" Git Gutter {{{
+let g:gitgutter_enabled = 1
 let g:gitgutter_override_sign_column_highlight = 0
+
 let g:gitgutter_sign_added                     = '+'
 let g:gitgutter_sign_modified                  = '±'
 let g:gitgutter_sign_removed                   = '-'
 let g:gitgutter_sign_removed_first_line        = '×'
 let g:gitgutter_sign_modified_removed          = '×'
-"------------------------------------------------------------------------------
-" NERDTree
-"------------------------------------------------------------------------------
-let g:NERDTreeMinimalUI           = 1
-let g:NERDTreeWinPos              = 'left'
-let g:NERDTreeWinSize             = 20
-let g:NERDTreeStatusline          = "  "
-let g:NERDTreeDirArrowExpandable  = '+'
-let g:NERDTreeDirArrowCollapsible = '-'
-"------------------------------------------------------------------------------
-" FZF
-"------------------------------------------------------------------------------
-let g:fzf_command_prefix = 'Fzf'
-nnoremap <Leader>b :FzfBuffers<CR>
-nnoremap <Leader>f :FzfLines<CR>
-nnoremap <Leader>h :FzfHistory<CR>
-nnoremap <Leader>t :FzfBTags<CR>
-nnoremap <silent> <Leader>x :FzfCommits<CR>
-nnoremap <Leader>T :FzfTags<CR>
-" Have FZF list all tracked files plus untracked files minus ignored files
-nnoremap <Leader>p :FzfGitFiles --exclude-standard --others --cached<CR>
-" nnoremap <C-p> :FzfGitFiles --exclude-standard --others --cached<CR>
-nnoremap <Leader>gt :FzfRg<CR>
+"}}}
+" FZF {{{
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
 
-" floating fzf window with borders
-let g:fzf_layout = { 'window': 'call CreateCenteredFloatingWindow()' }
+" Enable per-command history.
+" CTRL-N and CTRL-P will be automatically bound to next-history and
+" previous-history instead of down and up. If you don't like the change,
+" explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
+let g:fzf_history_dir = '~/.local/share/fzf-history'
+let g:fzf_buffers_jump = 0
+
+map <leader>p :Files<CR>
+nnoremap <C-b> :Buffers<CR>
+
+map <leader>b :Buffers<CR>
+nnoremap <leader>g :Rg<CR>
+nnoremap <leader>t :Tags<CR>
+nnoremap <leader>m :Marks<CR>
+
+let g:fzf_tags_command = 'ctags -R'
+
+"let g:fzf_layout = { 'window': 'call CreateCenteredFloatingWindow()' }
+"let $FZF_DEFAULT_OPTS="--reverse "                      " top to bottom
+
 let $FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git/**' -g '!{node_modules,.git}'"
 
-function! FZFWithDevIcons()
-    let l:fzf_files_options = ' -m --bind ctrl-d:preview-page-down,ctrl-u:preview-page-up --preview "bat --color always --style numbers {2..}" '
+" Customize fzf colors to match your color scheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 
-  function! s:files()
-    let l:files = split(system($FZF_DEFAULT_COMMAND.'| devicon-lookup'), '\n')
-    return l:files
-  endfunction
+"Get Files
+command! -bang -nargs=? -complete=dir Files
+    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--inline-info']}), <bang>0)
+"Get Files
+command! -bang -nargs=? -complete=dir Files
+    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--inline-info']}), <bang>0)
 
-  function! s:edit_file(items)
-    let items = a:items
-    let i = 1
-    let ln = len(items)
-    while i < ln
-      let item = items[i]
-      let parts = split(item, ' ')
-      let file_path = get(parts, 1, '')
-      let items[i] = file_path
-      let i += 1
-    endwhile
-    call s:Sink(items)
-  endfunction
 
-  let opts = fzf#wrap({})
-  let opts.source = <sid>files()
-  let s:Sink = opts['sink*']
-  let opts['sink*'] = function('s:edit_file')
-  let opts.options .= l:fzf_files_options
-  call fzf#run(opts)
+" Get text in files with Rg
+" command! -bang -nargs=* Rg
+"   \ call fzf#vim#grep(
+"   \   "rg --column --line-number --no-heading --color=always --smart-case --glob '!.git/**' ".shellescape(<q-args>), 1,
+
+ " Make Ripgrep ONLY search file contents and not filenames
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --hidden --smart-case --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
+  \           : fzf#vim#with_preview({'options': '--delimiter : --nth 4.. -e'}, 'right:50%', '?'),
+  \   <bang>0)
+
+" Ripgrep advanced
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
 endfunction
 
-" Open fzf Files
-nnoremap <silent> <C-p> :call FZFWithDevIcons() --exclude-standard --others --cached<CR>
-function! CreateCenteredFloatingWindow()
-    let width = min([&columns - 4, max([80, &columns - 20])])
-    let height = min([&lines - 4, max([20, &lines - 10])])
-    let top = ((&lines - height) / 2) - 1
-    let left = (&columns - width) / 2
-    let opts = {'relative': 'editor', 'row': top, 'col': left, 'width': width, 'height': height, 'style': 'minimal'}
+command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+"}}}
 
-    let top = "╭" . repeat("─", width - 2) . "╮"
-    let mid = "│" . repeat(" ", width - 2) . "│"
-    let bot = "╰" . repeat("─", width - 2) . "╯"
-    let lines = [top] + repeat([mid], height - 2) + [bot]
-    let s:buf = nvim_create_buf(v:false, v:true)
-    call nvim_buf_set_lines(s:buf, 0, -1, v:true, lines)
-    call nvim_open_win(s:buf, v:true, opts)
-    set winhl=Normal:Floating
-    let opts.row += 1
-    let opts.height -= 2
-    let opts.col += 2
-    let opts.width -= 4
-    call nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
-    au BufWipeout <buffer> exe 'bw '.s:buf
-endfunction
-"------------------------------------------------------------------------------
-" Defaults
-"------------------------------------------------------------------------------
-syntax enable                           " Enables syntax highlighing
-set hidden                              " Required to keep multiple buffers open multiple buffers
-set encoding=utf-8                      " The encoding displayed
-set pumheight=10                        " Makes popup menu smaller
-set fileencoding=utf-8                  " The encoding written to file
-set ruler                                   " Show the cursor position all the time
-set cmdheight=2                         " More space for displaying messages
-set mouse=a                             " Enable your mouse
-set splitbelow                          " Horizontal splits will automatically be below
-set splitright                          " Vertical splits will automatically be to the right
-set t_Co=256                            " Support 256 colors
-set conceallevel=0                      " So that I can see `` in markdown files
+" Defaults {{{
+syntax enable
+set hidden
+set colorcolumn=80
+
+set t_Co=256
+set encoding=utf-8
+set fileencoding=utf-8
+
+set pumheight=10
+set ruler
+set cmdheight=2
+set mouse=a
+set splitbelow
+set splitright
+set conceallevel=0
+set wildmenu
+set autoread
+
+" Testing with path ** disabled
+" set path+=**
+set updatetime=100
+
+" Indentation {{{
+set smarttab
 set expandtab
-set shiftwidth=4
+set smartindent
+set autoindent
+set expandtab
 set tabstop=4
+set shiftwidth=4
 set softtabstop=4
-set path+=**
-set updatetime=300
-set smarttab                            " Makes tabbing smarter will realize you have 2 vs 4
-set expandtab                           " Converts tabs to spaces
-set smartindent                         " Makes indenting smart
-set autoindent                          " Good auto indent
-set laststatus=2                        " Always display the status line
+"}}}
+
+
 set number
 set relativenumber
-set showtabline=2                       " Always show tabs
-set noshowmode                          " We don't need to see things like -- INSERT -- anymore
-set shortmess+=c                        " Don't pass messages to |ins-completion-menu|.
-set signcolumn=yes                      " Always show the signcolumn, otherwise it would shift the text each time
-set timeoutlen=500 "Default 1000ms
-set clipboard=unnamedplus               " Copy paste between vim and everything else
-set colorcolumn=80
-highlight ColorColumn guibg=#3d434f
-set incsearch
-" Disable auto comment
-set formatoptions-=cro
-set iskeyword+=-                      	" treat dash separated words as a word text object"
 
+set laststatus=2
+set showtabline=2
+set noshowmode
+set shortmess+=c
+set signcolumn=yes
+set timeoutlen=500
+
+set incsearch
+set formatoptions-=cro
+set iskeyword-=_
+set clipboard=unnamedplus
+
+" Ignored filetype {{{
 set wildignore+=.git,.hg,.svn
 set wildignore+=*.aux,*.out,*.toc
 set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest,*.rbc,*.class
@@ -288,23 +311,12 @@ set wildignore+=*.eot,*.otf,*.ttf,*.woff
 set wildignore+=*.doc,*.pdf,*.cbr,*.cbz
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz,*.kgb
 set wildignore+=*.swp,.lock,.DS_Store,._*
+" }}}
 
-" Better splits
-set splitbelow
-set splitright
-
-" Code folding
-set foldmethod=indent
+" Code folding {{{
 set foldnestmax=10
 set foldlevel=2
-
-" coc-nvim
-hi CocHintSign ctermfg=6
-hi CocErrorSign ctermfg=1
-hi CocWarningSign ctermfg=3
-hi CocInfoSign ctermfg=6
-
-hi CocInfoFloat ctermfg=7
-hi CocHintFloat ctermfg=7
-
+set foldmethod=marker  
+"}}}
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+"}}}
