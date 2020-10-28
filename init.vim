@@ -1,13 +1,18 @@
+" ░█░█░▀█▀░█▄█░░░█▀▀░█▀█░█▀█░█▀▀░▀█▀░█▀▀
+" ░▀▄▀░░█░░█░█░░░█░░░█░█░█░█░█▀▀░░█░░█░█
+" ░░▀░░▀▀▀░▀░▀░░░▀▀▀░▀▀▀░▀░▀░▀░░░▀▀▀░▀▀▀
+
 " Set leader key to <space>
 let mapleader = "\<Space>"
 set shell=/bin/zsh
 
-" Imports
+" Imports {{{
 let $conf_path = "$HOME/.config/nvim"
 
 source $conf_path/coc.vim 
 source $conf_path/plugs.vim
 source $conf_path/maps.vim
+"}}}
 
 " general settings {{{
 set nobackup
@@ -25,7 +30,7 @@ set dir=/tmp
 let g:gruvbox_material_background = 'medium'
 let g:gruvbox_material_palette = 'material'
 let g:gruvbox_material_visual = 'green background'
-let g:gruvbox_material_cursor = 'auto'
+let g:_material_cursor = 'auto'
 let g:gruvbox_material_disable_italic_comment = 1
 let g:gruvbox_invert_selection= 0
 
@@ -59,7 +64,6 @@ augroup END
 set termguicolors
 colo gruvbox-material
 set background=dark
-let g:airline_theme = 'grubox-material'
 "}}}
 
 " vim-devicons {{{
@@ -86,6 +90,18 @@ set list
 set listchars=
 set listchars+=tab:›\ ,
 set listchars+=trail:•,
+" Delete trailing white space on save, useful for some filetypes ;)
+fun! CleanExtraSpaces()
+    let save_cursor = getpos(".")
+    let old_query = getreg('/')
+    silent! %s/\s\+$//e
+    call setpos('.', save_cursor)
+    call setreg('/', old_query)
+endfun
+
+if has("autocmd")
+    autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
+endif
 " set listchars=tab:┊\ ,nbsp:␣,space:•,extends:>,precedes:<,trail:•
 "}}}
 
@@ -267,6 +283,8 @@ set colorcolumn=80
 set t_Co=256
 set encoding=utf-8
 set fileencoding=utf-8
+" Unix as standard
+set ffs=unix,dos,mac
 
 set pumheight=10
 set ruler
@@ -277,6 +295,7 @@ set splitright
 set conceallevel=0
 set wildmenu
 set autoread
+au FocusGained,BufEnter * checktime
 
 " Testing with path ** disabled
 " set path+=**
@@ -291,6 +310,10 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
+
+" Configure backspace so it acts as it should act
+set backspace=eol,start,indent
+set whichwrap+=<,>,h,l
 "}}}
 
 
@@ -304,10 +327,22 @@ set shortmess+=c
 set signcolumn=yes
 set timeoutlen=500
 
+" Default search
 set incsearch
+set hlsearch
+set smartcase
+
 set formatoptions-=cro
 set iskeyword-=_
 set clipboard=unnamedplus
+
+set visualbell
+set title
+
+set guioptions-=r
+set guioptions-=R
+set guioptions-=l
+set guioptions-=L
 
 " Ignored filetype {{{
 set wildignore+=.git,.hg,.svn
@@ -323,9 +358,67 @@ set wildignore+=*.swp,.lock,.DS_Store,._*
 " }}}
 
 " Code folding {{{
-set foldnestmax=10
+set foldnestmax=3
 set foldlevel=2
-set foldmethod=marker  
+" Start code folded
+set foldlevelstart=0
+set foldnestmax=10
+set foldcolumn=2
+set foldmethod=syntax
+" Set fold method mark base on filytype
+autocmd FileType vim setlocal foldmethod=marker
+autocmd FileType html setlocal foldmethod=indent
+autocmd FileType js call JavaScriptFold()
+
+function! JavaScriptFold() 
+    setl foldmethod=syntax
+    setl foldlevelstart=1
+    syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
+
+    function! FoldText()
+        return substitute(getline(v:foldstart), '{.*', '{...}', '')
+    endfunction
+    setl foldtext=FoldText()
+endfunction
 "}}}
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" Don't redraw while executing macros (good performance config)
+set lazyredraw 
+
+" For regular expressions turn magic on
+set magic
+
+" Undo {{{
+try
+    set undodir=~/.config/nvim/temp_dirs/undodir
+    set undofile
+catch
+endtry
 "}}}
+"}}}
+
+" Helper functions {{{
+" Don't close window, when deleting a buffer
+command! Bclose call <SID>BufcloseCloseIt()
+function! <SID>BufcloseCloseIt()
+    let l:currentBufNum = bufnr("%")
+    let l:alternateBufNum = bufnr("#")
+
+    if buflisted(l:alternateBufNum)
+        buffer #
+    else
+        bnext
+    endif
+
+    if bufnr("%") == l:currentBufNum
+        new
+    endif
+
+    if buflisted(l:currentBufNum)
+        execute("bdelete! ".l:currentBufNum)
+    endif
+endfunction
+"}}}
+
+
