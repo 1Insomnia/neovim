@@ -62,7 +62,8 @@ augroup colorscheme_change | au!
 augroup END
 
 set termguicolors
-colo gruvbox-material
+colo dracula
+" colo gruvbox-material
 set background=dark
 "}}}
 

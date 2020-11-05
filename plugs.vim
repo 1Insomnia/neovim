@@ -66,7 +66,6 @@ Plug 'junegunn/goyo.vim'
 " Colorschemes {{{
 Plug 'jsit/toast.vim'
 
-Plug 'fcpg/vim-orbital'
 Plug 'nerdypepper/agila.vim'
 Plug 'junegunn/seoul256.vim' 
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
@@ -77,6 +76,7 @@ Plug 'rakr/vim-colors-rakr'
 
 Plug 'ghifarit53/tokyonight-vim'
 Plug 'ghifarit53/daycula-vim' , {'branch' : 'main'}
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 Plug 'sainnhe/gruvbox-material'
 Plug 'sainnhe/forest-night'
